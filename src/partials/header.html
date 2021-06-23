@@ -1,0 +1,73 @@
+<header class="header__home__theme">
+    <div class="header__container">
+       
+        <nav class="header__nav"> 
+
+              <a href="./index.html" class="logo">                  
+                    <svg class="header__icon logo-js">
+                        <use href="./img/sprite.svg#film"></use>
+                    </svg>
+
+                    <span class="header__logo logo-js">Filmoteka</span>
+                </a>      
+         
+
+            <ul class="nav__list">
+
+                <li class="nav__item nav__item--current home-js">
+                    <a href="#">Home</a>
+                </li>
+                <li class="nav__item js-nav__item">
+                    <a href="#">my library</a>
+                </li>
+
+            </ul> 
+
+        </nav> 
+
+            <!-- <form class="header__search__form">
+                <input class="header__input js-header__input" 
+                type="text" 
+                placeholder="Поиск фильмов">
+                <button type="submit">
+                    <svg class="header__input__icon" width="12" height="12">
+                        <use href="./img/sprite.svg#search"></use>
+                    </svg>
+                </button>
+            </form> -->
+
+
+            <form class="header__search__form" id="search-form">
+                    <input
+                        name="query"
+                        class="header__input js-header__input"
+                        type="text"
+                        placeholder="Поиск фильмов"/>
+
+                    <!-- <label for="name" class="header__input-label">Поиск фильмов</label> -->
+
+                    <button type="submit" class="search-btn">
+                        <svg class="input__icon__svg" width="12" height="12">
+                            <use href="./img/sprite.svg#search"></use>
+                        </svg>
+                    </button>
+                    </form>
+
+                    <p class="notification">
+                            Search result not successful. Enter the correct movie name and try again
+                    </p>
+
+
+        <div class="header__button">
+            <ul class="header__button__list none">
+                <li class="header__button__list__item">
+                    <button type="button" class="header__button__list__item__title">Watched</button>
+                </li>
+                <li class="header__button__list__item">
+                    <button  type="button" class="header__button__list__item__title">Queue</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</header>
