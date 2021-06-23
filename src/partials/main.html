@@ -2,16 +2,18 @@
     <div class="main__container">
         <h1 class="main__title"></h1>
         <ul class="main__film-list"></ul>
-        <ul class="main__btn-list">
-            <li class="btn-list__item"><button class="item__previous-btn"></button></li>
-            <li class="btn-list__item">
-                <ul class="item__list">
-                    <li class="list__item"><button class="item__btn">1</button></li>
-                    <li class="list__item"><button class="item__btn">2</button></li>
-                    <li class="list__item"><button class="item__btn">3</button></li>
-                </ul>
-            </li>
-            <li class="btn-list__item"><button class="item__next-btn"></button></li>
+
+        <ul class="main__button-list">
+
+            <li class="button-list__item js-btn-pr"><button class="button-list__pgn">Prev</button></li>
+
+            <div class="button-list__container">
+                <li class="button-list__item button-list__item--curretn"><button class="button-list__page">1</button></li>
+                <li class="button-list__item "><button class="button-list__page">2</button></li>
+                <li class="button-list__item "><button class="button-list__page">3</button></li>
+            </div>
+
+            <li class="button-list__item js-btn-next"><button class="next button-list__pgn">Next</button></li>
         </ul>
     </div>
 </main>
