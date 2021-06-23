@@ -1,5 +1,5 @@
 import refs from './refs';
-import trendMovieTpl from '../templates/trendFilm.hbs';
+import filmCardTpl from '../templates/filmCardTpl.hbs';
 
 const API__KEY = '44d74a10460e9a32f8546bed31d47780';
 const BASE__URL = 'https://api.themoviedb.org/3/discover/';
@@ -19,7 +19,7 @@ export default class PaginationService {
         })
         .then( ({results} ) =>{
     
-            const markUp = trendMovieTpl(results);
+            const markUp = filmCardTpl(results);
             refs.trendContainer.innerHTML = ''
             refs.trendContainer.insertAdjacentHTML('beforeend',markUp); 
         })
