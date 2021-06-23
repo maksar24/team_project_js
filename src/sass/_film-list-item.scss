@@ -1,0 +1,62 @@
+.film__list__item {
+  margin: 10px;
+
+  @media screen and (min-width: $tablet) {
+    width: calc((100% - 4 * 15px) / 2);
+    margin: 15px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: calc((100% - 6 * 15px) / 3);
+    margin: 15px;
+  }
+}
+
+.film__poster {
+  border-radius: 2%;
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 294px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 274px;
+  }
+}
+
+.film__card__info {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.film__title {
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.film__card__details {
+  display: flex;
+}
+
+.film__details {
+  color: $accent-color;
+}
+
+.film__details-vote {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+
+  text-transform: uppercase;
+  border-radius: 5px;
+
+  color: #ffffff;
+  background-color: $accent-color;
+}
