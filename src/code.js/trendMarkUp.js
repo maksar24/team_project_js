@@ -1,5 +1,5 @@
 import SearchApiTrend from "./apiTrendservice.js";
-import trendMovieTpl from "../templates/trendFilm.hbs";
+import trendMovieTpl from "../templates/filmCardTpl.hbs";
 import refs from './refs';
 
 SearchApiTrend.fetchtrend().then(results => {

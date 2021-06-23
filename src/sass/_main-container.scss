@@ -1,0 +1,19 @@
+.main__container {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $mobile) {
+    max-width: 320px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: 768px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 1024px;
+  }
+}
