@@ -112,6 +112,6 @@ function renderMovies(results) {
             const markUp = filmCardTpl(results);
             refs.trendContainer.innerHTML = ''
             refs.trendContainer.insertAdjacentHTML('beforeend', markUp);
-            // refs.button.classList.add('none');
+
         })
 }
