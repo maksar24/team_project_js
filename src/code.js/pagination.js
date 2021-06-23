@@ -72,8 +72,8 @@ refs.btnList.addEventListener('click', e => {
     makePagination.feachMovie()
 })
 
-function kekw(kuda, n){
-	refs.btnList.insertAdjacentHTML(kuda,`<li class="button-list__item"><button class="button-list__page">${n}</button></li>`)
+function elBtnCreate(location, n){
+	refs.btnList.insertAdjacentHTML(location,`<li class="button-list__item"><button class="button-list__page">${n}</button></li>`)
 }
 
 function btnCreate(){
@@ -83,8 +83,8 @@ function btnCreate(){
     for(let i = 1; i < 3; i++){
       
     if(n+i < 501)
-      kekw('beforeend', n+i);
+      elBtnCreate('beforeend', n+i);
      if(n-i > 0)
-            kekw('afterbegin', n-i);
+            elBtnCreate('afterbegin', n-i);
     } 
 }
