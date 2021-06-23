@@ -18,10 +18,7 @@ export default class PaginationService {
             return films
         })
         .then( ({results} ) =>{
-    
-            const markUp = filmCardTpl(results);
-            refs.trendContainer.innerHTML = ''
-            refs.trendContainer.insertAdjacentHTML('beforeend',markUp); 
+            renderMovies(results)
         })
     } 
 }
@@ -87,4 +84,34 @@ function btnCreate(){
      if(n-i > 0)
             elBtnCreate('afterbegin', n-i);
     } 
+}
+
+function fetchGenres() {
+    return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
+        .then(r => r.json())
+        .then(({ genres }) => {
+            let temp = {};
+            for (let genre of genres) {
+                temp[genre.id] = genre.name;
+            };
+            return temp;
+        })
+}
+
+
+function renderMovies(results) {
+    // console.log(results);
+    fetchGenres()
+        .then(genres => {
+
+            results.forEach(result => {
+                result.genre_ids = result.genre_ids.map(genre => genres[genre])
+                result.release_date = result.release_date.slice(0, 4)
+            });
+
+            const markUp = filmCardTpl(results);
+            refs.trendContainer.innerHTML = ''
+            refs.trendContainer.insertAdjacentHTML('beforeend', markUp);
+            // refs.button.classList.add('none');
+        })
 }
