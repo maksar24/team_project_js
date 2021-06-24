@@ -1,12 +1,10 @@
 import SearchApiTrend from "./apiTrendservice.js";
-import trendMovieTpl from "../templates/withoutRating.hbs";
+import trendMovieTpl from "../templates/filmCardTpl.hbs";
 import refs from './refs';
 
 SearchApiTrend.fetchtrend().then(results => {
     renderMovies(results)
 });
-
-
 
 function renderMovies(results) {
     // console.log(results);
@@ -17,18 +15,13 @@ function renderMovies(results) {
                 result.genre_ids = result.genre_ids.map(genre => genres[genre])
                 result.release_date = result.release_date.slice(0, 4)
             });
-            const markUp = trendMovieTpl(results);    
-                refs.trendContainer.insertAdjacentHTML('beforeend', markUp);
-             
-       
-                // refs.genreInfo.classList.add('none')
+
+            const markUp = trendMovieTpl(results);
+            refs.trendContainer.insertAdjacentHTML('beforeend', markUp);
+            // refs.button.classList.add('none');
         })
 }
 
-// function myId() {
-//     var elem = document.getElementById('my');
-//      elem.classlist.add('none');
-// }
 
 function fetchGenres() {
     return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
@@ -41,6 +34,4 @@ function fetchGenres() {
             return temp;
         })
 }
-
-
 
