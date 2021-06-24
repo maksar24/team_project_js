@@ -4,16 +4,18 @@
 
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
 
   @media screen and (min-width: $mobile) {
-    max-width: 320px;
+    max-width: 280px;
   }
 
   @media screen and (min-width: $tablet) {
-    max-width: 768px;
+    max-width: 648px;
   }
 
   @media screen and (min-width: $desktop) {
-    max-width: 1024px;
+    max-width: 882px;
   }
 }

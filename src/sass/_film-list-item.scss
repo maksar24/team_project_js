@@ -1,48 +1,62 @@
 .film__list__item {
-  margin: 10px;
+  max-width: 100%;
+  margin: 20px;
 
   @media screen and (min-width: $tablet) {
-    width: calc((100% - 4 * 15px) / 2);
-    margin: 15px;
+    width: calc((100% - 4 * 20px) / 2);
+    max-width: 293px;
+    margin: 20px;
   }
 
   @media screen and (min-width: $desktop) {
-    width: calc((100% - 6 * 15px) / 3);
-    margin: 15px;
+    width: calc((100% - 6 * 20px) / 3);
+    max-width: 274px;
+    margin: 20px;
   }
 }
 
 .film__poster {
-  border-radius: 2%;
-  width: 280px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 
-  @media screen and (min-width: 768px) {
-    width: 294px;
-  }
+  margin-bottom: 10px;
 
-  @media screen and (min-width: $desktop) {
-    width: 274px;
-  }
+  // width: 280px;
+  // @media screen and (min-width: 768px) {
+  //   width: 293px;
+  // }
+  // @media screen and (min-width: $desktop) {
+  //   width: 274px;
+  // }
 }
 
 .film__card__info {
-  font-family: Roboto;
-  font-style: normal;
+  height: 32px;
+
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
+
+  align-items: center;
+  overflow: hidden;
 }
 
 .film__title {
+  margin: 0;
   text-transform: uppercase;
   color: #000000;
 }
 
 .film__card__details {
   display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
 }
 
 .film__details {
+  margin: 0;
   color: $accent-color;
 }
 

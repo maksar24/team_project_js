@@ -1,0 +1,30 @@
+
+            <img class="modal__img" src='https://image.tmdb.org/t/p/original/{{poster_path}}' alt="{{title}}">
+            <div class="modal__description">
+                <h2 class="modal__title">{{title}}</h2>
+                <ul class="modal__info-list">
+                    <li class="info-list__item">
+                        <h3 class="info-list__title">Vote / Votes</h3>
+                        <span class="info-list__rating">{{vote_average}}</span>/
+                        <p class="info-list__rating info-list__rating--white">{{vote_count}}</p>
+                    </li>
+                    <li class="info-list__item">
+                        <h3 class="info-list__title">Popularity</h3>
+                        <p class="info-list__description">{{popularity}}</p>
+                    </li>
+                    <li class="info-list__item">
+                        <h3 class="info-list__title">Original_title</h3>
+                        <p class="info-list__description">{{original_title}}</p>
+                    </li>
+                    <li class="info-list__item">
+                        <h3 class="info-list__title">Genre</h3>
+                        <p class="info-list__description">{{#each genres}}{{this.name}}{{/each}}</p>
+                    </li>
+                </ul>
+                <h3 class="modal__about">About</h3>
+                <p class="about__text">{{overview}}</p>
+                <ul class="modal__btn-list">
+                    <li class="btn-list__item"><button class="btn__watched">add to Watched</button></li>
+                    <li class="btn-list__item"><button class="btn__watched btn__queue">add to queue</button></li>
+                </ul>
+            </div>

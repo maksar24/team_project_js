@@ -1,16 +1,6 @@
 const refs = {
    // ссылка на основной контейнер
    trendContainer: document.querySelector('.main__film-list'), 
-
-
-
-
-
-
-
-
-
-
    // ссылка на контейнер пагинации
    btnListPage: document.querySelector('.button-list__page'),
    // ссылка на кнопку след. в пагинации
@@ -32,6 +22,13 @@ const refs = {
    myLibButton: document.querySelector('.header__button__list'),
    // ссылка на форму-поисковик
    searchForm: document.querySelector('.header__search__form'),
+   searchForm: document.querySelector('#search-form'),
+   spanRef: document.querySelector('.notification'),
+   modal: document.querySelector('.modal'),
+   backdrop: document.querySelector('.backdrop'),
+   close: document.querySelector('.modal__close'),
+   btn__watched: document.querySelector('.btn__watched'),
+   btn__queue:document.querySelector('.btn__watched')
 
 }
 

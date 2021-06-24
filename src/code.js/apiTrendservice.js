@@ -7,15 +7,13 @@ function fetchtrend() {
     return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
     .then(r => {
         if (r.ok) {
-            console.log(r)
             return r.json()
         }
   
 })
 .then(({ results }) => {
-    console.log(results)
-
     return results; 
+
 })
 }
 
