@@ -21,6 +21,8 @@ async function onSearch(e) {
       refs.spanRef.classList.add('active');
     }
     newsApiService.resetPage();
+    // добавляет loader
+    refs.loader.classList.remove('loader_is-hidden')
     const fetch = await newsApiService.fetchFilm();
     if (fetch.total_results === 0) {
       refs.spanRef.classList.add('active');
@@ -30,6 +32,8 @@ async function onSearch(e) {
       refs.spanRef.classList.remove('active');
     }
     const marcup = addArticlesMarcup(fetch.results);
+    // удаляет loader
+    refs.loader.classList.add('loader_is-hidden')
     return marcup;
   } catch (error) {
     console.log('error');
