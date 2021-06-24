@@ -8,6 +8,15 @@
     margin-left: auto;
     width: 374px;
     height: 40px;
+
+    @media screen and (max-width: 767px) {
+      width: 280px;
+      height: 40px;
+      margin-right: auto;
+      margin-left: auto;
+        
+      }
+      
 }
 
 .button-list__pgn,
@@ -57,3 +66,5 @@ li.button-list__item {
     width: 100%;
     // height: 40px;    
 }
+
+
