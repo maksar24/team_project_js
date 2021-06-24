@@ -33,11 +33,8 @@
 }
 
 .film__card__info {
-  height: 32px;
-
   font-weight: 500;
   font-size: 12px;
-  line-height: 14px;
 
   align-items: center;
   overflow: hidden;
@@ -46,13 +43,14 @@
 .film__title {
   margin: 0;
   text-transform: uppercase;
+  line-height: 16px;
   color: #000000;
 }
 
 .film__card__details {
   display: flex;
   justify-content: space-between;
-  margin-top: 2px;
+  line-height: 14px;
 }
 
 .film__details {
@@ -73,7 +71,4 @@
 
   color: #ffffff;
   background-color: $accent-color;
-
 }
-
-
