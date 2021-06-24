@@ -43,11 +43,11 @@ function renderMovies(r){
     refs.backdrop.classList.add('is-open')
   // подключает функционал для добавления фильмов в списки
     const addWatched = new addMoviesToCollection({
-        selector: '[data-name="watched"]',
+        selector: '[data-name="add__watched"]',
     });
   
     const addQueue = new addMoviesToCollection({
-        selector: '[data-name="queue"]',
+        selector: '[data-name="add__queue"]',
     });
 
     addWatched.refs.button.addEventListener('click', e => {
