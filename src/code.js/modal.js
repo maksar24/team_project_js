@@ -1,5 +1,7 @@
 import refs from './refs';
 import modalTpl from '../templates/modal.hbs'
+// импорт функционала для добавления фильмов
+import addMoviesToCollection from './addMoviesToCollection.js';
 
 
 refs.backdrop.addEventListener('click',onBackDropClick)
@@ -39,6 +41,22 @@ function renderMovies(r){
     window.addEventListener('keydown', onEscPress)
     refs.modal.insertAdjacentHTML('beforeend', markUp);
     refs.backdrop.classList.add('is-open')
+  // подключает функционал для добавления фильмов в списки
+    const addWatched = new addMoviesToCollection({
+        selector: '[data-name="watched"]',
+    });
+  
+    const addQueue = new addMoviesToCollection({
+        selector: '[data-name="queue"]',
+    });
+
+    addWatched.refs.button.addEventListener('click', e => {
+        addWatched.addMovies('watched', r.id)
+    })
+
+    addQueue.refs.button.addEventListener('click', e => {
+        addQueue.addMovies('queue', r.id)
+    })
 }
 
 
