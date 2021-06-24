@@ -1,3 +1,4 @@
+
 const API_KEY = '61153224aaaa08b03f5d3b14add082d2';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -11,7 +12,8 @@ function fetchtrend() {
   
 })
 .then(({ results }) => {
-    return results;
+    return results; 
+
 })
 }
 
