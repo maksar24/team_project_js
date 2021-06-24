@@ -37,6 +37,9 @@ function renderMovies(r){
     const markUp = modalTpl(r);
     refs.close.addEventListener('click', onBtnClose)
     window.addEventListener('keydown', onEscPress)
+    if (refs.modal.children[1]) {
+        refs.modal.children[1].remove();
+    }
     refs.modal.insertAdjacentHTML('beforeend', markUp);
     refs.backdrop.classList.add('is-open')
 }
@@ -47,6 +50,7 @@ function onBtnClose(){
     window.removeEventListener('keydown', onEscPress)
     refs.modal.children[1].remove();
     refs.modal.children[1].remove();
+    refs.modal.insertAdjacentHTML('beforeend', ' <ul class="modal__btn-list"><li class="btn-list__item"><button class="btn__watched">add to Watched</button></li><li class="btn-list__item"><button class="btn__watched btn__queue">add to queue</button></li></ul>');
 }
 
 
