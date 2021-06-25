@@ -18,6 +18,7 @@ refs.homeLink.addEventListener('click', onHomeLinkClick);
 
 function onHomeLinkClick(event) {
     event.preventDefault();
+    refs.trendContainer.innerHTML = '';
     refs.headerForm.classList.remove('none');
     refs.button.classList.add('none');
 
