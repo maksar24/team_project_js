@@ -110,8 +110,11 @@ function renderMovies(results) {
             });
 
             const markUp = filmCardTpl(results);
-            refs.trendContainer.innerHTML = ''
-            refs.trendContainer.insertAdjacentHTML('beforeend', markUp);
-
+            refs.trendContainer.innerHTML = '';
+            window.scrollTo({
+                top: 1000,
+                behavior: "smooth"
+            });
+            refs.trendContainer.insertAdjacentHTML('beforeend', markUp);   
         })
 }
