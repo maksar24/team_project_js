@@ -44,6 +44,7 @@ function renderMovies(r){
     }
     refs.modal.insertAdjacentHTML('beforeend', markUp);
     refs.backdrop.classList.add('is-open')
+    document.body.classList.add('backdrop-scroll')
   // подключает функционал для добавления фильмов в списки
     const addWatched = new addMoviesToCollection({
         selector: '[data-name="add__watched"]',
@@ -65,6 +66,7 @@ function renderMovies(r){
 
 function onBtnClose(){
     refs.backdrop.classList.remove('is-open')
+    document.body.classList.remove('backdrop-scroll')
     window.removeEventListener('keydown', onEscPress)
     refs.modal.children[1].remove();
     refs.modal.children[1].remove();
