@@ -11,9 +11,7 @@ const Theme = {
     MYLIBRARY: 'header__ml__theme',
 };
 
-refs.logoLink.addEventListener('click', onHomeLinkClick);
-refs.libraryLink.addEventListener('click', onMyLibraryLinkClick);
-refs.homeLink.addEventListener('click', onHomeLinkClick);
+
 
 
 function onHomeLinkClick(event) {
@@ -29,7 +27,6 @@ function onHomeLinkClick(event) {
 SearchApiTrend.fetchtrend().then(results => {
     renderMovies(results)
 });
-    renderMovies(results);
     fetchGenres();
 
 }
@@ -58,6 +55,9 @@ function changeHeadersTheme(theme) {
     } 
 }
 
+refs.logoLink.addEventListener('click', onHomeLinkClick);
+refs.libraryLink.addEventListener('click', onMyLibraryLinkClick);
+refs.homeLink.addEventListener('click', onHomeLinkClick);
 /*изменяю стили svg*/
 
 // const Color = {

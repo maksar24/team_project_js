@@ -2,7 +2,7 @@ let Modal = document.querySelector('#modal'),
   ModalContentBlock = Modal.querySelector('.footer-modal__block'), 
   ModalContent;
 
-document.addEventListener('click', function(e) { 
+  document.querySelector('.footer').addEventListener('click', function(e) {
   if(e.target.tagName === 'A') { 
     ModalContent = document.querySelector(e.target.getAttribute('href')) || false; 
 
