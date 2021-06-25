@@ -1,5 +1,5 @@
 import refs from './refs';
-import filmCardTpl from '../templates/filmCardTpl.hbs';
+import filmCardTpl from '../templates/withoutRating.hbs';
 
 const API__KEY = '44d74a10460e9a32f8546bed31d47780';
 const BASE__URL = 'https://api.themoviedb.org/3/discover/';
