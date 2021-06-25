@@ -6,6 +6,7 @@
 }
 
 .header__input {
+  position: relative;
   border: none;
   border-bottom: 0.5px solid #ffffff;
   width: 100%;
@@ -24,22 +25,11 @@
 
   &:focus {
     border-bottom: 0.5px solid $accent-color;
-
     &::placeholder {
-      color: transparent;
+    color: transparent;
     }
-
-    // .input__icon__svg {
-    //   stroke: $accent-color;
-    //   // fill: $accent-color;
-    // }
-  }
 }
 
-  input.header__input:focus + button .input__icon__svg {
-    stroke: $accent-color;
-    fill: $accent-color;
-  
 }
 
 .header__input::placeholder {
@@ -52,37 +42,46 @@
 }
 
 .search-btn {
+    width: 12px;
+    height: 12px;
+    color: #ffffff;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    position: absolute;
+    top: -2px;
+    right: 4px;
+    cursor: pointer;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.1); 
+        // background-color: $accent-color;  
+      }
+}
+
+  .input__icon__svg {
+    stroke: #ffffff;         
+  }
+
+.input__icon__svg {
+  position: absolute;
   width: 12px;
   height: 12px;
-  color: #ffffff;
+  right: 0;
+  top: 2px;
+  stroke: #ffffff;
+}
 
-  border: none;
-  outline: none;
-  background: transparent;
-
-  position: absolute;
-  top: -2px;
-  right: 8px;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1); 
-    // background-color: $accent-color;  
+.header__input:focus {
+  ~ .search-btn .input__icon__svg {
+    stroke: $accent-color;
   }
 }
-//   .input__icon__svg {
-//     stroke: #ffffff;
-//     &__outfocus {
-//       stroke: #ffffff; 
-//     }       
-//   }
 
-//  .input__icon__svg {
-//    &__onfocus {
-//       stroke: $accent-color;
-//    }     
-//   }
+
 
 
 /*от Лены*/
@@ -139,7 +138,7 @@
     display: block;
     transition: 0.2s;
     font-size: 14px;
-    color: #ff6b08;
+    color: $accent-color;
     font-weight: 500;
   }
 

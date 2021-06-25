@@ -1,5 +1,9 @@
 /*Kate SEA меняю стили header*/
+import SearchApiTrend from "./apiTrendservice.js";
+import trendMovieTpl from "../templates/withoutRating.hbs";
 import refs from './refs';
+import {renderMovies, fetchGenres} from "./trendMarkUp.js";
+
 
 
 const Theme = {
@@ -11,12 +15,22 @@ refs.logoLink.addEventListener('click', onHomeLinkClick);
 refs.libraryLink.addEventListener('click', onMyLibraryLinkClick);
 refs.homeLink.addEventListener('click', onHomeLinkClick);
 
+
 function onHomeLinkClick(event) {
     event.preventDefault();
     refs.headerForm.classList.remove('none');
     refs.button.classList.add('none');
 
-    changeHeadersTheme(Theme.HOME);    
+    changeHeadersTheme(Theme.HOME);  
+
+    //отрисовываем фильмы на домашней странице
+    
+SearchApiTrend.fetchtrend().then(results => {
+    renderMovies(results)
+});
+    renderMovies(results);
+    fetchGenres();
+
 }
 
 function onMyLibraryLinkClick(event) {
