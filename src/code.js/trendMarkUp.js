@@ -6,8 +6,6 @@ SearchApiTrend.fetchtrend().then(results => {
     renderMovies(results)
 });
 
-
-
 function renderMovies(results) {
     // console.log(results);
     fetchGenres()
@@ -20,15 +18,9 @@ function renderMovies(results) {
             const markUp = trendMovieTpl(results);    
                 refs.trendContainer.insertAdjacentHTML('beforeend', markUp);
              
-       
-                // refs.genreInfo.classList.add('none')
         })
 }
 
-// function myId() {
-//     var elem = document.getElementById('my');
-//      elem.classlist.add('none');
-// }
 
 function fetchGenres() {
     return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
@@ -41,6 +33,3 @@ function fetchGenres() {
             return temp;
         })
 }
-
-
-

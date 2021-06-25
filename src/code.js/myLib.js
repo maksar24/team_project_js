@@ -4,6 +4,7 @@ import trendMovie from "../templates/filmCardTpl.hbs";
 // импорт функционала для отрисовки списков фильмов
 import markUpMoviesCollection from './markUpMoviesCollection.js';
 
+
 refs.libraryBtn.addEventListener('click', showWatchedCollection);
 
 // добавляет функционал на кнопки списков
@@ -21,6 +22,7 @@ function showWatchedCollection() {
     showWatched.fetchPersonsCollectionMovies(watchedCollection)
     showWatched.refs.button.disabled = true
     showQueue.refs.secondButton.disabled = false
+    
 }
 
 function showQueueCollection() {
@@ -29,6 +31,7 @@ function showQueueCollection() {
     showQueue.fetchPersonsCollectionMovies(queueCollection)
     showQueue.refs.button.disabled = true
     showWatched.refs.firstButton.disabled = false
+ 
 }
 
 showWatched.refs.button.addEventListener('click', showWatchedCollection);
@@ -56,7 +59,7 @@ function onLibraryButtonClick(e) {
     });
 }
 
-onclick="this.className = (this.className == 'film__details-vote' ? 'none' : '')"
+// onclick="this.className = (this.className == 'film__details-vote' ? 'none' : '')"
 
 SearchApiTrend.fetchtrend();
 

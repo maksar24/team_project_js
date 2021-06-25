@@ -15,6 +15,7 @@ function fetchtrend() {
     return results; 
 
 })
+.catch(error => console.log(error));
 }
 
 export default { fetchtrend };
