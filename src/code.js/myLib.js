@@ -1,9 +1,6 @@
-import SearchApiTrend from "./apiTrendservice.js";
 import refs from './refs';
-import trendMovie from "../templates/filmCardTpl.hbs";
 // импорт функционала для отрисовки списков фильмов
 import markUpMoviesCollection from './markUpMoviesCollection.js';
-
 
 refs.libraryBtn.addEventListener('click', showWatchedCollection);
 
@@ -17,21 +14,31 @@ const showQueue = new markUpMoviesCollection({
 });
 
 function showWatchedCollection() {
+    showWatched.hideBackgroundWithoutCollection()
     document.querySelectorAll('.film__list__item').forEach(li => li.remove())
     const watchedCollection = JSON.parse(localStorage.getItem('watched'))
+    if (watchedCollection === null || watchedCollection.length === 0) {
+            showWatched.refs.button.disabled = true
+            showQueue.refs.secondButton.disabled = false
+        return showWatched.showBackgroundWithoutCollection('watched')
+    }
     showWatched.fetchPersonsCollectionMovies(watchedCollection)
     showWatched.refs.button.disabled = true
     showQueue.refs.secondButton.disabled = false
-    
 }
 
 function showQueueCollection() {
+    showQueue.hideBackgroundWithoutCollection()
     document.querySelectorAll('.film__list__item').forEach(li => li.remove())
     const queueCollection = JSON.parse(localStorage.getItem('queue'))
+    if (queueCollection === null || queueCollection.length === 0) {
+            showQueue.refs.button.disabled = true
+            showWatched.refs.firstButton.disabled = false
+        return showWatched.showBackgroundWithoutCollection('queue')
+    }
     showQueue.fetchPersonsCollectionMovies(queueCollection)
     showQueue.refs.button.disabled = true
     showWatched.refs.firstButton.disabled = false
- 
 }
 
 showWatched.refs.button.addEventListener('click', showWatchedCollection);
