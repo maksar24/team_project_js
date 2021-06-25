@@ -951,6 +951,7 @@ li.button-list__item {
 
 .backdrop {
   position: fixed;
+  overflow-y: scroll;
   top: 0;
   right: 0;
   width: 100%;
@@ -974,6 +975,10 @@ li.button-list__item {
   display: flex;
   opacity: 1;
   pointer-events: initial;
+}
+
+.backdrop-scroll {
+  overflow: hidden;
 }
 
 .modal {
