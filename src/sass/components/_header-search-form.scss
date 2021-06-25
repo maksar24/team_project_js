@@ -25,24 +25,21 @@
   &:focus {
     border-bottom: 0.5px solid $accent-color;
 
-    .input__icon__svg {
-      fill: $accent-color;
-    }
-
     &::placeholder {
       color: transparent;
     }
+
+    // .input__icon__svg {
+    //   stroke: $accent-color;
+    //   // fill: $accent-color;
+    // }
   }
+}
 
-  //   &::placeholder {
-  //   color: transparent;
-  // }
-
-  // &:placeholder-shown ~ .header__input-label {
-  //   font-size: 1.2rem;
-  //   cursor: text;
-  //   top: 25px;
-  // }
+  input.header__input:focus + button .input__icon__svg {
+    stroke: $accent-color;
+    fill: $accent-color;
+  
 }
 
 .header__input::placeholder {
@@ -64,19 +61,121 @@
   background: transparent;
 
   position: absolute;
-  top: -4px;
+  top: -2px;
   right: 8px;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    transform: scale(1.1);
-
-    .input__icon__svg {
-      fill: $accent-color;
-    }
+    transform: scale(1.1); 
+    // background-color: $accent-color;  
   }
 }
+//   .input__icon__svg {
+//     stroke: #ffffff;
+//     &__outfocus {
+//       stroke: #ffffff; 
+//     }       
+//   }
+
+//  .input__icon__svg {
+//    &__onfocus {
+//       stroke: $accent-color;
+//    }     
+//   }
+
+
+/*от Лены*/
+// .search-form {
+//   position: relative;
+//   margin: 0 auto;
+//   margin-bottom: 22px;
+//   padding: 15px 0 0;
+//   width: 280px;
+
+//   @media screen and (min-width: $tablet) {
+//     width: 336px;
+//   }
+// }
+
+// .header__input {
+// width: 100%;
+// padding: 4px;
+
+// outline: none;
+// background-color: transparent;
+// border: none;
+// box-shadow: none;
+// border-bottom: 0.5px solid #fff;
+// font-size: 14px;
+// line-height: 1.17;
+// font-weight: 400;
+// color: #fff;
+
+// &::placeholder {
+//   color: transparent;
+// }
+
+//   &:placeholder-shown ~ .header__input-label {
+//     font-size: 1.2rem;
+//     cursor: text;
+//     top: 25px;
+//   }
+// }
+
+.header__input-label {
+  display: none;
+  position: absolute;
+  bottom: 25px;
+  // display: block;
+  transition: 0.2s;
+  color: #fff;
+}
+
+.header__input:focus {
+  ~ .header__input-label {
+    position: absolute;
+    // top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 14px;
+    color: #ff6b08;
+    font-weight: 500;
+  }
+
+}
+
+.header__input {
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+.notification {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  opacity: 0;
+  font-size: 14px;
+  line-height: 1.17;
+  font-weight: 400;
+  text-align: left;
+  color: #ff001b;
+
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.active {
+    opacity: 1;
+  }
+
+  @media screen and (min-width: $tablet) {
+    text-align: center;
+  }
+}
+
 
 @media screen and (min-width: 320px) {
   .header__search__form {
@@ -99,116 +198,5 @@
     position: relative;
     width: 336px;
     margin: 37px auto 0 auto;
-  }
-}
-
-/*от Лены*/
-// .search-form {
-//   position: relative;
-//   margin: 0 auto;
-//   margin-bottom: 22px;
-//   padding: 15px 0 0;
-//   width: 280px;
-
-//   @media screen and (min-width: $tablet) {
-//     width: 336px;
-//   }
-// }
-
-.header__input {
-  // width: 100%;
-  // padding: 4px;
-
-  // outline: none;
-  // background-color: transparent;
-  // border: none;
-  // box-shadow: none;
-  // border-bottom: 0.5px solid #fff;
-  // font-size: 14px;
-  // line-height: 1.17;
-  // font-weight: 400;
-  // color: #fff;
-
-  // &::placeholder {
-  //   color: transparent;
-  // }
-
-  &:placeholder-shown ~ .header__input-label {
-    font-size: 1.2rem;
-    cursor: text;
-    top: 25px;
-  }
-}
-
-// .header__input-label {
-//   position: absolute;
-//   bottom: 15px;
-//   display: block;
-//   transition: 0.2s;
-//   color: #fff;
-// }
-
-// .header__input:focus {
-//   ~ .header__input-label {
-//     position: absolute;
-//     // top: 0;
-//     display: block;
-//     transition: 0.2s;
-//     font-size: 1rem;
-//     color: #ff6b08;
-//     font-weight: 500;
-//   }
-//   padding-bottom: 6px;
-//   font-weight: 500;
-//   border-width: 2px;
-//   border-image: linear-gradient(to right, #ff6b08, #ff001b);
-//   border-image-slice: 1;
-// }
-
-// .header__input {
-//   &:required,
-//   &:invalid {
-//     box-shadow: none;
-//   }
-// }
-
-//.search-btn {
-// position: absolute;
-// right: 7px;
-// bottom: 15px;
-// color: #fff;
-// background-color: transparent;
-// background-repeat: no-repeat;
-// border: none;
-// cursor: pointer;
-
-// outline: none;
-
-// &:hover,
-// &:focus {
-//   transform: scale(1.1);
-// }
-//}
-
-.notification {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-
-  opacity: 0;
-  font-size: 14px;
-  line-height: 1.17;
-  font-weight: 400;
-  text-align: left;
-  color: #ff001b;
-
-  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-  @media screen and (min-width: $tablet) {
-    text-align: center;
-  }
-  &.active {
-    opacity: 1;
   }
 }

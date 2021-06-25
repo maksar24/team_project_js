@@ -32,6 +32,20 @@ const refs = {
    // добавляет loader
    loader: document.querySelector('.loader'),
 
+     /*ссылки для header Kate SEA*/
+   header: document.querySelector('header'),
+   homeLink: document.querySelector('.home-js'),
+   libraryLink: document.querySelector('.library-js'),
+   headerForm: document.querySelector('.header__search__form'), 
+   button: document.querySelector('.header__button__list'),
+   logoLink: document.querySelector('.logo'),
+
+   /*ссылки для формы поиска на хедере*/
+   headerForm: document.querySelector('.header__search__form'), 
+   inputRef: document.querySelector('.header__input'),
+   btnSrchRef: document.querySelector('.search-btn'),
+   svgRef: document.querySelector('.input__icon__svg'),
+
 }
 
 export default refs;
