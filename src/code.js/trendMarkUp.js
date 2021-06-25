@@ -33,3 +33,5 @@ function fetchGenres() {
             return temp;
         })
 }
+
+export {renderMovies, fetchGenres};
