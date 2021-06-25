@@ -12,7 +12,7 @@ const refs = {
    // ссылка на кнопку Home
    homeBtn: document.querySelector('.home-js'),
    // ссылка на кнопку My Library
-   libraryBtn: document.querySelector('.lib-js'),
+   libraryBtn: document.querySelector('.library-js'),
    // ссылка на рейтинг в карточке фильма
    genreInfo: document.querySelector('.film__details-vote'),
    rate: document.querySelector('p[data-action="data-rate"]'),
