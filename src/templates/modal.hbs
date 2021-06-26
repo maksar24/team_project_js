@@ -1,5 +1,10 @@
 
+            {{#if poster_path}}
             <img class="modal__img" src='https://image.tmdb.org/t/p/original/{{poster_path}}' alt="{{title}}">
+            {{else}}
+            <img class="modal__img" src='https://image.tmdb.org/t/p/original//w4OS1QNZCXnJSVuRP2qzzVIO63q.jpg' alt="{{title}}">
+            {{/if}}
+
             <div class="modal__description">
                 <h2 class="modal__title">{{title}}</h2>
                 <ul class="modal__info-list">
