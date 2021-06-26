@@ -6,13 +6,33 @@ SearchApiTrend.fetchtrend().then(results => {
     renderMovies(results)
 });
 
+
+// function fetchGenres() {
+//     return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
+//     .then(response =>  {
+//         return response.json()
+//     })
+// }
+
+// function render (results) {
+//     fetchGenres();
+//     const mmm = trendMovieTpl(results)
+//     refs.trendContainer.insertAdjacentHTML('beforeend', mmm);
+// }
+
 function renderMovies(results) {
+    var ooo = [];
     // console.log(results);
     fetchGenres()
         .then(genres => {
 
             results.forEach(result => {
-                result.genre_ids = result.genre_ids.map(genre => genres[genre])
+                
+                result.genre_ids = result.genre_ids.slice(0, 3).map(genre => genres[genre])
+                // 
+                // result.genre_ids.slice(3, 4)
+              
+
                 result.release_date = result.release_date.slice(0, 4)
             });
             const markUp = trendMovieTpl(results);    
@@ -20,7 +40,6 @@ function renderMovies(results) {
              
         })
 }
-
 
 function fetchGenres() {
     return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
@@ -35,3 +54,20 @@ function fetchGenres() {
 }
 
 export {renderMovies, fetchGenres};
+
+
+// function fetchGenres() {
+//     return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
+//     .then(response =>  {
+//         return response.json()
+//     })
+// }
+
+
+// function renderMovies(results) {
+//     // console.log(results);
+//     fetchGenres()
+        
+//             const markUp = trendMovieTpl(results);    
+//                 refs.trendContainer.insertAdjacentHTML('beforeend', markUp);     
+// }

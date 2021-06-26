@@ -102,7 +102,7 @@ function renderMovies(results) {
         .then(genres => {
 
             results.forEach(result => {
-                result.genre_ids = result.genre_ids.map(genre => genres[genre])
+                result.genre_ids = result.genre_ids.slice(0, 3).map(genre => genres[genre])
                 result.release_date = result.release_date.slice(0, 4)
             });
 
