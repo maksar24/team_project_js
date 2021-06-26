@@ -23,6 +23,12 @@
 
   margin-bottom: 10px;
 
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
   // width: 280px;
   // @media screen and (min-width: 768px) {
   //   width: 293px;
@@ -49,7 +55,7 @@
 
 .film__card__details {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   line-height: 14px;
 }
 
@@ -72,3 +78,29 @@
   color: #ffffff;
   background-color: $accent-color;
 }
+
+.genres {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 0;
+  color: $accent-color;
+  overflow: hidden;
+ 
+}
+
+.genres li:not(:last-child):after {
+  content: ',';
+  margin-right: 10px;
+}
+
+.genres li:nth-child(3n):after {
+  content: '...';
+  margin-right: 10px;
+  overflow: hidden; 
+}
+
+
+
+
+
