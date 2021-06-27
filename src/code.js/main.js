@@ -4,3 +4,4 @@ import "./search.js";
 import "./modal.js"
 import "./header.js";
 import "./myLib.js";
+import "./footer.js";
