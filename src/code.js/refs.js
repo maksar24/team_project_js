@@ -46,6 +46,11 @@ const refs = {
    btnSrchRef: document.querySelector('.search-btn'),
    svgRef: document.querySelector('.input__icon__svg'),
 
+  //  ссылки для футера
+   modal: document.querySelector('#modal'),
+   footerBtnCls: document.querySelector('.footer__btn'),
+   footerCrossCls: document.querySelector('.button__styles--close'),
+
 }
 
 export default refs;
