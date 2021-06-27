@@ -30,6 +30,7 @@ function fetchtrend(filmId) {
     
     })
     .then(r => {
+
         renderMovies(r)
         })
 }
@@ -37,12 +38,13 @@ function fetchtrend(filmId) {
 
 function renderMovies(r){
     const markUp = modalTpl(r);
+    
     refs.close.addEventListener('click', onBtnClose)
     window.addEventListener('keydown', onEscPress)
-    if (refs.modal.children[1]) {
-        refs.modal.children[1].remove();
+    if (refs.modalFilm.children[1]) {
+        refs.modalFilm.children[1].remove();
     }
-    refs.modal.insertAdjacentHTML('beforeend', markUp);
+    refs.modalFilm.insertAdjacentHTML('beforeend', markUp);
     refs.backdrop.classList.add('is-open')
 
     document.body.classList.add('backdrop-scroll')

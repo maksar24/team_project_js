@@ -24,7 +24,7 @@ const refs = {
    searchForm: document.querySelector('.header__search__form'),
    searchForm: document.querySelector('#search-form'),
    spanRef: document.querySelector('.notification'),
-   modal: document.querySelector('.modal'),
+   modalFilm: document.querySelector('.modal'),
    backdrop: document.querySelector('.backdrop'),
    close: document.querySelector('.modal__close'),
    btn__watched: document.querySelector('.btn__watched'),
