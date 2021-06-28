@@ -12,6 +12,7 @@ async function onSearch(e) {
   try {
     clearArticlesConteiner();
     newsApiService.query = e.target.value.trim();
+    
     if (newsApiService.query === '') {
       refs.spanRef.classList.remove('active');
       addArticlesMarcup();
