@@ -22,6 +22,7 @@ function showWatchedCollection() {
             showQueue.refs.secondButton.disabled = false
         return showWatched.showBackgroundWithoutCollection('watched')
     }
+    showWatched.hidePaginationButtons(watchedCollection)
     showWatched.fetchPersonsCollectionMovies(watchedCollection)
     showWatched.refs.button.disabled = true
     showQueue.refs.secondButton.disabled = false
@@ -36,6 +37,7 @@ function showQueueCollection() {
             showWatched.refs.firstButton.disabled = false
         return showWatched.showBackgroundWithoutCollection('queue')
     }
+    showQueue.hidePaginationButtons(queueCollection)
     showQueue.fetchPersonsCollectionMovies(queueCollection)
     showQueue.refs.button.disabled = true
     showWatched.refs.firstButton.disabled = false

@@ -1,5 +1,4 @@
 import collectionMovies from '../templates/filmCardTpl.hbs';
-// импорт для показа фона, когда в списке нету фильмов
 
 export default class markUpMoviesCollection {
     constructor({ selector }) {
@@ -13,6 +12,7 @@ export default class markUpMoviesCollection {
         refs.firstButton = document.querySelector('[data-name="show__watched"]');
         refs.secondButton = document.querySelector('[data-name="show__queue"]');
         refs.bgEmptyCollection = document.querySelector('.bg__empty__collection');
+        refs.paginationButtons = document.querySelector('.main__button-list');
         return refs;
     }
 
@@ -35,7 +35,7 @@ export default class markUpMoviesCollection {
 
     // отрисовывает фон, когда в списке нету фильмов
     showBackgroundWithoutCollection(name) {
-        const background = `<p class="bg__empty__collection">Sorry, but you haven't selected anything to ${name} yet</p>`;
+        const background = `<p class="bg__empty__collection">Sorry, but you haven't selected anything to ${name} yet<span class="bg__empty__collection bg__icon">ヽ(°□° )ノ</span></p>`;
         this.refs.container.insertAdjacentHTML('beforeend', background);
     }
 
@@ -45,5 +45,13 @@ export default class markUpMoviesCollection {
             return
         }
         background.remove();
+    }
+
+    // скрытие кнопок пагинации
+    hidePaginationButtons(e) {
+        if (e === null || e.length <= 9) {
+            return this.refs.paginationButtons.classList.add('visually-hidden')
+        }
+        this.refs.paginationButtons.classList.remove('visually-hidden')
     }
 }

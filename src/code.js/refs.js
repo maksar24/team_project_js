@@ -28,7 +28,7 @@ const refs = {
    backdrop: document.querySelector('.backdrop'),
    close: document.querySelector('.modal__close'),
    btn__watched: document.querySelector('.btn__watched'),
-   btn__queue: document.querySelector('.btn__watched'),
+   btn__queue: document.querySelector('.btn__queue'),
    // добавляет loader
    loader: document.querySelector('.loader'),
 
@@ -51,6 +51,8 @@ const refs = {
    footerBtnCls: document.querySelector('.footer__btn'),
    footerCrossCls: document.querySelector('.button__styles--close'),
 
+   // кнопки пагинации
+   paginationButtons: document.querySelector('.main__button-list'),
 }
 
 export default refs;
