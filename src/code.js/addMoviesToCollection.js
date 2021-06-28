@@ -18,8 +18,15 @@ export default class addMoviesToCollection {
         localStorage.setItem(`${nameList}`, JSON.stringify(value))
 
         if (localStorage.getItem(`${nameList}`).includes(JSON.stringify(moviesId))) {
+            const currentId = value.find((el) => el === moviesId)
+            if (currentId) {
+                value.splice(value.indexOf(currentId), 1);
+                localStorage.setItem(`${nameList}`, JSON.stringify(value))
+            }
+            this.refs.button.textContent = `add to ${nameList}`
             return
         }
+        this.refs.button.textContent = `remove from ${nameList}`
         value.push(moviesId)
         localStorage.setItem(`${nameList}`, JSON.stringify(value))
         // добавила оповещение о добавлении

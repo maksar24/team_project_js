@@ -28,7 +28,8 @@ SearchApiTrend.fetchtrend().then(results => {
     renderMovies(results)
 });
     fetchGenres();
-
+    // отрисовка кнопок пагинации
+    refs.paginationButtons.classList.remove('visually-hidden')
 }
 
 function onMyLibraryLinkClick(event) {
