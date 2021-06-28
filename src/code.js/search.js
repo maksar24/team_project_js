@@ -46,8 +46,9 @@ function addArticlesMarcup(newFilms) {
     newFilms.forEach(result =>{
       result.genre_ids = result.genre_ids.map(genre => genres[genre])
     })
+    refs.trendContainer.insertAdjacentHTML('beforeend', trendMovieTpl(newFilms))
   })
-  return refs.trendContainer.insertAdjacentHTML('beforeend', trendMovieTpl(newFilms));
+  return 
 }
 
 function clearArticlesConteiner() {
