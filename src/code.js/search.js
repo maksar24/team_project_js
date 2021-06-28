@@ -7,7 +7,7 @@ const debounce = require('lodash.debounce');
 
 const newsApiService = new NewsApiService();
 
-refs.searchForm.addEventListener('input', debounce(onSearch, 1000));
+refs.searchForm.addEventListener('input', debounce(onSearch, 800));
 refs.searchForm.addEventListener("focusout", (focusOff));
 async function onSearch(e) {
   e.preventDefault();
@@ -27,6 +27,7 @@ async function onSearch(e) {
     // добавляет loader
     refs.loader.classList.remove('loader_is-hidden')
     const fetch = await newsApiService.fetchFilm();
+    
     if (fetch.total_results === 0) {
       refs.spanRef.classList.add('active');
       addArticlesMarcup();
@@ -51,11 +52,11 @@ function addArticlesMarcup(newFilms) {
 
         result.release_date = result.release_date.slice(0, 4)
       })
-    
+      
       refs.trendContainer.insertAdjacentHTML('beforeend', trendMovieTpl(newFilms))
-    })
+    })       
   return 
-}
+} 
 
 function clearArticlesConteiner() {
   refs.trendContainer.innerHTML = '';
