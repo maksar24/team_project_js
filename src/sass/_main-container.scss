@@ -22,3 +22,35 @@
     max-width: 882px;
   }
 }
+
+
+// стили для кнопки "наверх"
+.back_to_top {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background: rgba(240, 235, 235, 1);
+  cursor: pointer;
+  border-radius: 50px;
+  display: none;
+
+  @media screen and (max-width: 767px) {
+  
+    bottom: 20px;
+    right: 10px;
+  }
+
+}
+
+.back_to_top:hover {
+  background: rgba(247, 217, 151, 1);;
+}
+
+.back_to_top-show {
+  display: block;
+}
