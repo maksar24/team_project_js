@@ -5,7 +5,7 @@ const debounce = require('lodash.debounce');
 
 const newsApiService = new NewsApiService();
 
-refs.searchForm.addEventListener('input', debounce(onSearch, 500));
+refs.searchForm.addEventListener('input', debounce(onSearch, 1000));
 
 async function onSearch(e) {
   e.preventDefault();
@@ -41,9 +41,27 @@ async function onSearch(e) {
   }
 }
 function addArticlesMarcup(newFilms) {
+  fetchGenres()
+  .then(genres =>{
+    newFilms.forEach(result =>{
+      result.genre_ids = result.genre_ids.map(genre => genres[genre])
+    })
+  })
   return refs.trendContainer.insertAdjacentHTML('beforeend', trendMovieTpl(newFilms));
 }
 
 function clearArticlesConteiner() {
   refs.trendContainer.innerHTML = '';
+}
+
+function fetchGenres() {
+  return fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=61153224aaaa08b03f5d3b14add082d2&language=en-US%27')
+      .then(r => r.json())
+      .then(({ genres }) => {
+          let temp = {};
+          for (let genre of genres) {
+              temp[genre.id] = genre.name;
+          };
+          return temp;
+      })
 }

@@ -3,6 +3,7 @@ import trendMovieTpl from "../templates/withoutRating.hbs";
 import refs from './refs';
 
 SearchApiTrend.fetchtrend().then(results => {
+    
     renderMovies(results)
 });
 
