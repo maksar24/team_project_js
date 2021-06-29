@@ -20,6 +20,7 @@ function showWatchedCollection() {
     if (watchedCollection === null || watchedCollection.length === 0) {
             showWatched.refs.button.disabled = true
             showQueue.refs.secondButton.disabled = false
+            showWatched.hidePaginationButtons(watchedCollection)
         return showWatched.showBackgroundWithoutCollection('watched')
     }
     showWatched.hidePaginationButtons(watchedCollection)
