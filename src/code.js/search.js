@@ -9,6 +9,8 @@ const newsApiService = new NewsApiService();
 
 refs.searchForm.addEventListener('input', debounce(onSearch, 800));
 refs.searchForm.addEventListener("focusout", (focusOff));
+
+
 async function onSearch(e) {
   e.preventDefault();
   try {

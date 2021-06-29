@@ -11,9 +11,6 @@ const Theme = {
     MYLIBRARY: 'header__ml__theme',
 };
 
-
-
-
 function onHomeLinkClick(event) {
     event.preventDefault();
     refs.trendContainer.innerHTML = '';

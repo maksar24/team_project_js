@@ -115,3 +115,5 @@ function renderMovies(results) {
             refs.trendContainer.insertAdjacentHTML('beforeend', markUp);   
         })
 }
+
+
