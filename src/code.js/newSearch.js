@@ -217,62 +217,7 @@ function fetchGenres() {
 //   }
 
 
-function renderMovies(r){
-    const markUp = modalTpl(r);
-    
-    refs.close.addEventListener('click', onBtnClose)
-    window.addEventListener('keydown', onEscPress)
-
-    if (refs.modalFilm.children[1]) {
-        refs.modalFilm.children[1].remove();
-    }
-    if (refs.modalFilm.children[1]) {
-        refs.modalFilm.children[1].remove();
-    }
-    
-    refs.modalFilm.insertAdjacentHTML('beforeend', markUp);
-    refs.backdrop.classList.add('is-open')
-
-    document.body.classList.add('backdrop-scroll')
-
-  // подключает функционал для добавления фильмов в списки
-    const addWatched = new addMoviesToCollection({
-        selector: '[data-name="add__watched"]',
-    });
-  
-    const addQueue = new addMoviesToCollection({
-        selector: '[data-name="add__queue"]',
-    });
 
 
-    
-    addWatched.refs.button.addEventListener('click', e => {
-        addWatched.addMovies('watched', r.id)
-    })
-
-    addQueue.refs.button.addEventListener('click', e => {
-        addQueue.addMovies('queue', r.id)
-    })
-}
 
 
-function onBtnClose(){
-    refs.backdrop.classList.remove('is-open')
-
-    document.body.classList.remove('backdrop-scroll')
-
-    window.removeEventListener('keydown', onEscPress)
-    refs.modal.insertAdjacentHTML('beforeend', ' <ul class="modal__btn-list"><li class="btn-list__item"><button class="btn__watched">add to Watched</button></li><li class="btn-list__item"><button class="btn__watched btn__queue">add to queue</button></li></ul>');
-}
-
-
-  function onEscPress(evt){
-    if(evt.code === 'Escape'){
-      onBtnClose();
-    }
-}
-  function onBackDropClick(evt){
-    if(evt.currentTarget === evt.target){
-      onBtnClose();
-    }
-}
