@@ -2,6 +2,7 @@ import refs from './refs';
 import SearchApiTrend from "./apiTrendservice.js";
 import filmCardTpl from '../templates/withoutRating.hbs';
 const debounce = require('lodash.debounce');
+import modalTpl from '../templates/modal.hbs'
 
 
 let searchQuery = '';
@@ -10,13 +11,29 @@ let totalPages = 1
 const API_KEY = '61153224aaaa08b03f5d3b14add082d2';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-refs.searchForm.addEventListener("focusout", (focusOff));
 
+// SearchApiTrend.fetchtrend().then(results => {
+//     renderMovies(results)
+// });
 
-
-SearchApiTrend.fetchtrend().then(results => {
-    renderMovies(results)
-});
+refs.inputRef.addEventListener('blur', e => {
+    
+    if(e.currentTarget.value === ''){
+        const API_KEY = '61153224aaaa08b03f5d3b14add082d2';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
+        .then(r => r.json)
+        .then(({results}) => {
+            refs.filmList.innerHTML = '';
+            SearchApiTrend.fetchtrend().then(results => {
+                renderMovies(results);
+        
+          });
+       
+            return results
+        })
+    }
+})
 
 
 refs.lastElBtn.addEventListener('click', e => {
@@ -185,40 +202,22 @@ function fetchGenres() {
 }
 
 
-function focusOff(e) {
-    e.preventDefault();
-    refs.trendContainer.innerHTML = '';
-    function clear() {
-              refs.inputRef.value = '';
+// function focusOff(e) {
+//     e.preventDefault();
+//     refs.trendContainer.innerHTML = '';
+//     function clear() {
+//               refs.inputRef.value = '';
               
-          }
-    SearchApiTrend.fetchtrend().then(results => {
-      renderMovies(results)
-  });
-      fetchGenres();
-    clear()
-  }
-
-
-// function createCardsMarkup (results) {
-//     return  results.map(({poster_path =`https://image.tmdb.org/t/p/original//rggnY0ID64ZspUVtRWVrWQm2tyo.jpg`, original_title, title ,genre_ids,release_date,vote_average,id}) => {
-//     //   return `<li class='film__list__item'>
-
-//     //   <img
-//     //     id='${id}'
-//     //     class='film__poster'
-//     //     src='https://image.tmdb.org/t/p/original/${poster_path}'
-//     //     alt='{${original_title}}'
-//     //   />
-//     //   <div class='film__card__info'>
-//     //     <p class='film__title'><b>${title}</b></p>
-//     //     <div class='film__card__details'> 
-//     //       <p class='film__details'> ${genre_ids} | ${release_date} </p>
-//     //       {{!-- <p class='film__details'> ${release_date} </p> --}}
-//     //       <p class='film__details-vote'> ${vote_average} </p>
-//     //     </div>
-//     //   </div>
-  
-//     // </li>`
-//   }).join('');
+//           }
+//     SearchApiTrend.fetchtrend().then(results => {
+//       renderMovies(results)
+//   });
+//       fetchGenres();
+//     clear()
 //   }
+
+
+
+
+
+
