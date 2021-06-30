@@ -461,8 +461,8 @@ li.button-list__item {
 
 .footer__link {
   text-decoration: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#b0fbbc), to(#b0fbbc)), -webkit-gradient(linear, left top, left bottom, from(#feb2b2), to(#feb2b2));
-  background-image: linear-gradient(#b0fbbc, #b0fbbc), linear-gradient(#feb2b2, #feb2b2);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent)), -webkit-gradient(linear, left top, left bottom, from(#ff6b08), to(#ff6b08));
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#ff6b08, #ff6b08);
   background-size: 100% 2px, 0 2px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
@@ -543,37 +543,33 @@ li.button-list__item {
 
 .button__styles--close {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 4px;
+  right: 4px;
+  width: 23px;
+  height: 23px;
+  border: none;
+  border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 35px;
-  height: 35px;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 50%;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
-  background-image: url("../img/pngwing.com.png");
-  background-position: center;
-  background-size: 70%;
-  background-repeat: no-repeat;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-@media screen and (max-width: 767px) {
+.button__styles--close:hover, .button__styles--close:focus {
+  background: #ff6b01;
+}
+
+@media screen and (min-width: 768px), (min-width: 1024px) {
   .button__styles--close {
-    top: 3px;
-    right: 3px;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -652,11 +648,12 @@ li.button-list__item {
 
 .footer__modal-title {
   color: #ff6b01;
-  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
   font-size: 20px;
   line-height: 1.15;
   text-align: center;
-  letter-spacing: 0.03em;
 }
 
 .team__list {
@@ -697,8 +694,8 @@ li.button-list__item {
 .person {
   width: 100%;
   padding: 5px;
+  border: 1px solid #eeeeee;
   border-radius: 0px 0px 4px 4px;
-  background-color: #f3e3c6;
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -706,8 +703,10 @@ li.button-list__item {
 .person__name {
   margin-top: 0;
   color: black;
-  font-weight: 500;
-  font-size: 14px;
+  padding-top: 5px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
   line-height: 1.19;
   text-align: center;
   letter-spacing: 0.03em;
@@ -717,7 +716,7 @@ li.button-list__item {
   .person__name {
     width: 100%;
     display: block;
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
@@ -725,7 +724,7 @@ li.button-list__item {
   .person__name {
     width: 100%;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -979,7 +978,7 @@ li.button-list__item {
   stroke: #ffffff;
 }
 
-.header__input:focus ~ .search-btn .input__icon__svg {
+.header__input:focus ~ .input__icon__svg {
   stroke: #ff6b08;
 }
 
