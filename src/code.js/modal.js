@@ -36,9 +36,11 @@ function fetchtrend(filmId) {
 }
     
 
-function renderMovies(r){
+function renderMovies(r) {
+  r.a = localStorage.queue && localStorage.queue.includes(r.id) ? false : true;
+  r.b = localStorage.watched && localStorage.watched.includes(r.id) ? false : true;
     const markUp = modalTpl(r);
-    
+   
     refs.close.addEventListener('click', onBtnClose)
     window.addEventListener('keydown', onEscPress)
 

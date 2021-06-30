@@ -1,3 +1,10 @@
+
+if (!localStorage.queue) {
+    localStorage.queue = []
+}
+if (!localStorage.watched) {
+    localStorage.watched = []
+}
 import "./trendMarkUp.js";
 import "./pagination.js";
 // import "./search.js";

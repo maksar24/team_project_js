@@ -95,7 +95,7 @@ refs.prevBtn.addEventListener('click', e => {
 })
 
 refs.btnList.addEventListener('click', e => {
-    if (e.target.nodeName !== 'BUTTON' || searchQuery === '' ){
+    if (e.target.nodeName !== 'BUTTON' || searchQuery !== '' ){
         return 
     }
     page = e.target.textContent - 0;
