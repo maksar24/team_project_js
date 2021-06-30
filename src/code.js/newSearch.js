@@ -120,7 +120,7 @@ refs.input.addEventListener('input', e => {
     refs.trendContainer.innerHTML = '';
 
     searchQuery = e.currentTarget.value.trim();
-    
+
     clearArticlesConteiner();
     if(searchQuery === ''){
         return
@@ -162,19 +162,6 @@ function btnCreate(){
 
 function fetchFilm(searchQuery, page) {
 //     if (!searchQuery) {
-//         return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
-//     .then(r => {
-//         if (r.ok) {
-//             return r.json()
-//         }
-  
-// })
-// .then( film => {
-//     return film; 
-
-// })
-//     }
-    // console.log(page)
     return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${searchQuery}`)
     .then(r => {
         if (r.ok) {
