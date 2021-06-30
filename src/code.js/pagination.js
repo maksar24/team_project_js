@@ -56,7 +56,7 @@ refs.pr.addEventListener('click', e =>{
 })
 
 refs.btnList.addEventListener('click', e => {
-    if(e.target.nodeName!== 'BUTTON'){
+    if(e.target.nodeName!== 'BUTTON' || refs.input.value === ''){
         return
     }
         
@@ -115,3 +115,5 @@ function renderMovies(results) {
             refs.trendContainer.insertAdjacentHTML('beforeend', markUp);   
         })
 }
+
+

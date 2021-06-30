@@ -8,7 +8,9 @@ const debounce = require('lodash.debounce');
 const newsApiService = new NewsApiService();
 
 refs.searchForm.addEventListener('input', debounce(onSearch, 800));
-refs.searchForm.addEventListener("focusout", (focusOff));
+// refs.searchForm.addEventListener("focusout", (focusOff));
+
+
 async function onSearch(e) {
   e.preventDefault();
   try {
@@ -74,16 +76,16 @@ function fetchGenres() {
       })
 }
 
-function focusOff(e) {
-  e.preventDefault();
-  refs.trendContainer.innerHTML = '';
-  function clear() {
-            refs.inputRef.value = '';
+// function focusOff(e) {
+//   e.preventDefault();
+//   refs.trendContainer.innerHTML = '';
+//   function clear() {
+//             refs.inputRef.value = '';
             
-        }
-  SearchApiTrend.fetchtrend().then(results => {
-    renderMovies(results)
-});
-    fetchGenres();
-  clear()
-}
+//         }
+//   SearchApiTrend.fetchtrend().then(results => {
+//     renderMovies(results)
+// });
+//     fetchGenres();
+//   clear()
+// }

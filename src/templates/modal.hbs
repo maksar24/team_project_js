@@ -30,7 +30,15 @@
                 <h3 class="modal__about">About</h3>
                 <p class="about__text">{{overview}}</p>
                 <ul class="modal__btn-list">
+                    {{#if b}}
                     <li class="btn-list__item"><button data-name="add__watched" class="btn__watched">add to Watched</button></li>
+                    {{else}}
+                    <li class="btn-list__item"><button data-name="add__watched" class="btn__watched">remuve to Watched</button></li>
+                    {{/if}}
+                    {{#if a}}
                     <li class="btn-list__item"><button data-name="add__queue" class="btn__watched btn__queue">add to queue</button></li>
+                    {{else}}
+                    <li class="btn-list__item"><button data-name="add__queue" class="btn__watched btn__queue">remuve to queue</button></li>
+                    {{/if}}
                 </ul>
             </div>

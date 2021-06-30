@@ -11,11 +11,9 @@ const Theme = {
     MYLIBRARY: 'header__ml__theme',
 };
 
-
-
-
 function onHomeLinkClick(event) {
     event.preventDefault();
+    refs.input.value = '';
     refs.trendContainer.innerHTML = '';
     refs.headerForm.classList.remove('none');
     refs.button.classList.add('none');
@@ -59,7 +57,9 @@ function changeHeadersTheme(theme) {
 refs.logoLink.addEventListener('click', onHomeLinkClick);
 refs.libraryLink.addEventListener('click', onMyLibraryLinkClick);
 refs.homeLink.addEventListener('click', onHomeLinkClick);
+
 /*изменяю стили svg*/
+
 
 // const Color = {
 //   FOCUS: 'valid',

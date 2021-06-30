@@ -40,14 +40,16 @@
             <form class="header__search__form" id="search-form">
                     <input
                         name="query"
-                        class="header__input js-header__input"
+                        class="header__input js-header__input js-input input"
                         type="text"
                         placeholder="Search movie"
                         autocomplete="off"/>
 
                     <label class="header__input-label">Search movie</label>
 
-                    <!-- <button type="submit" class="search-btn"> -->
+
+                    <div type="submit" class="search-btn">
+
                         <svg   id="svg-search" class="input__icon__svg" 
                             width="12" height="12" viewBox="0 0 12 12"  
                             xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +58,9 @@
                             <path d="M10.5 10.5L8.32495 8.32495"   stroke-linecap="round" stroke-linejoin="round"/>
                             <!-- <use href="./img/header/search.svg"></use> -->
                         </svg>
-                    <!-- </button>   -->
+
+                    </div>  
+
                     
                     <p class="notification">
                             Search result not successful. Enter the correct movie name and try again
