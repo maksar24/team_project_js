@@ -11,6 +11,7 @@ refs.trendContainer.addEventListener('click', (e) => {
     }
     const filmId = e.target.id;
     fetchtrend(filmId)
+    refs.arrow.classList.add('visually-hidden')
 })
 
 
@@ -107,7 +108,8 @@ function renderMovies(r){
 }
 
 
-function onBtnClose(){
+function onBtnClose() {
+    refs.arrow.classList.remove('visually-hidden')
     refs.backdrop.classList.remove('is-open')
 
     document.body.classList.remove('backdrop-scroll')

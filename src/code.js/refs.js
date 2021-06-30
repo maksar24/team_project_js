@@ -63,6 +63,9 @@ const refs = {
     firstElBtn : document.querySelector('.js-btn__first'),
     lastElBtn :document.querySelector('.js-btn__last'),
     btnListPage: document.querySelector('.button-list__page'),
+    
+  //стрелка вверх
+    arrow: document.querySelector('.back_to_top'),
 
 }
 
