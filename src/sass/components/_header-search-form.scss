@@ -52,7 +52,7 @@
   position: absolute;
   top: -2px;
   right: 4px;
-  cursor: pointer;
+  // cursor: pointer;
 
   &:hover,
   &:focus {
@@ -75,7 +75,7 @@
 }
 
 .header__input:focus {
-  ~ .input__icon__svg {
+  ~ .search-btn .input__icon__svg {
     stroke: $accent-color;
   }
 }
