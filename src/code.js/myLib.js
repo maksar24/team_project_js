@@ -14,6 +14,7 @@ const showQueue = new markUpMoviesCollection({
 });
 
 function showWatchedCollection() {
+    refs.input.value === '';
     showWatched.hideBackgroundWithoutCollection()
     document.querySelectorAll('.film__list__item').forEach(li => li.remove())
     const watchedCollection = JSON.parse(localStorage.getItem('watched'))

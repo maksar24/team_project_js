@@ -13,6 +13,7 @@ const Theme = {
 
 function onHomeLinkClick(event) {
     event.preventDefault();
+    refs.input.value === '';
     refs.trendContainer.innerHTML = '';
     refs.headerForm.classList.remove('none');
     refs.button.classList.add('none');

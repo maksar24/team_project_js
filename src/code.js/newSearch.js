@@ -37,27 +37,27 @@ refs.inputRef.addEventListener('blur', e => {
 
 refs.lastElBtn.addEventListener('click', e => {
     page = totalPages;
-    const film = fetchFilm(searchQuery,page)
-    film.then(results => {
+     const film = fetchFilm(searchQuery,page)
+    film.then(({ results }) => {
         console.log(results)
         refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
-    btnCreate()
+     btnCreate()
 })
 
 
 refs.firstElBtn.addEventListener('click', e => {
     page = 1;
-    const film = fetchFilm(searchQuery,page)
-    film.then(results => {
+     const film = fetchFilm(searchQuery,page)
+    film.then(({ results }) => {
         console.log(results)
         refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
-    btnCreate()
+     btnCreate()
 })
 
 
@@ -95,8 +95,8 @@ refs.prevBtn.addEventListener('click', e => {
 })
 
 refs.btnList.addEventListener('click', e => {
-    if(e.target.nodeName!== 'BUTTON'){
-        return
+    if (e.target.nodeName !== 'BUTTON' || searchQuery === '' ){
+        return 
     }
     page = e.target.textContent - 0;
     const film =  fetchFilm(searchQuery,page)
@@ -114,9 +114,7 @@ function elBtnCreate(location, page){
 	refs.btnList.insertAdjacentHTML(location,`<li class="button-list__item"><button class="button-list__page">${page}</button></li>`)
 }
 
-refs.input.addEventListener('input', debounce(onInputSurse(),1000))
-
-function onInputSurse(e){
+refs.input.addEventListener('input', e => {
     e.preventDefault();
     page = 1;
     refs.trendContainer.innerHTML = '';
@@ -125,7 +123,19 @@ function onInputSurse(e){
     if(searchQuery === ''){
         return
     }
-    btnCreate()
+    refs.paginationButtons.insertAdjacentHTML = (`<ul class="main__button-list">
+                <li class="button-list__item"><button class="js-btn__first">	
+                    &#171;</button></li>
+                <li class="button-list__item js-btn-pr"><button class="button-list__pgn">Prev</button></li>
+                <div class="button-list__container">
+                    <li class="button-list__item button-list__item--curretn"><button class="button-list__page">1</button></li>
+                    <li class="button-list__item "><button class="button-list__page">2</button></li>
+                    <li class="button-list__item "><button class="button-list__page">3</button></li>
+                </div>
+                <li class="button-list__item js-btn-next"><button class="next button-list__pgn">Next</button></li>
+                <li class="button-list__item "><button class="js-btn__last">	
+                    &#187;</button></li>
+            </ul>` )
     const film = fetchFilm(searchQuery,page)
 
     film.then(({ total_pages }) => {
@@ -137,7 +147,9 @@ function onInputSurse(e){
         renderMovies(results)
         return results; 
     })
-} 
+})
+
+
 
 function clearArticlesConteiner() {
     refs.trendContainer.innerHTML = '';
@@ -158,7 +170,20 @@ function btnCreate(){
 
 
 
-function fetchFilm(searchQuery,page) {
+function fetchFilm(searchQuery, page) {
+    if (!searchQuery) {
+        return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
+    .then(r => {
+        if (r.ok) {
+            return r.json()
+        }
+  
+})
+.then( film => {
+    return film; 
+
+})
+    }
     // console.log(page)
     return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${searchQuery}`)
     .then(r => {
@@ -175,6 +200,7 @@ function fetchFilm(searchQuery,page) {
 
 
 function renderMovies(results) {
+    console.log(results)
     // console.log(results);
     fetchGenres()
         .then(genres => {
