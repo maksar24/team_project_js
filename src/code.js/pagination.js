@@ -4,7 +4,6 @@ import filmCardTpl from '../templates/withoutRating.hbs';
 const API__KEY = '44d74a10460e9a32f8546bed31d47780';
 const BASE__URL = 'https://api.themoviedb.org/3/discover/';
 let n = 1;
-
 export default class PaginationService {
     constructor() {
         this.n = 1;
@@ -13,10 +12,12 @@ export default class PaginationService {
     feachMovie(){
         fetch(`${BASE__URL}movie?api_key=${API__KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${n}&with_watch_monetization_types=flatrate`)
         .then(r => r.json())
-        .then( films => {
+            .then(films => {
+            totalPages = films.total_pages
             return films
         })
         .then( ({results} ) =>{
+            
             renderMovies(results)
         })
     } 

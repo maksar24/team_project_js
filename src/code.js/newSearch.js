@@ -36,9 +36,6 @@ refs.inputRef.addEventListener('blur', e => {
 
 
 refs.lastElBtn.addEventListener('click', e => {
-        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
-        return 
-    }
     page = totalPages;
      const film = fetchFilm(searchQuery,page)
     film.then(({ results }) => {
@@ -52,9 +49,6 @@ refs.lastElBtn.addEventListener('click', e => {
 
 
 refs.firstElBtn.addEventListener('click', e => {
-        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
-        return 
-    }
     page = 1;
      const film = fetchFilm(searchQuery,page)
     film.then(({ results }) => {
@@ -68,9 +62,6 @@ refs.firstElBtn.addEventListener('click', e => {
 
 
 refs.nextBtn.addEventListener('click', e => {
-        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
-        return 
-    }
     page += 1;
      if(page > totalPages){
         page -= 1;
@@ -87,9 +78,6 @@ refs.nextBtn.addEventListener('click', e => {
 })
 
 refs.prevBtn.addEventListener('click', e => {
-        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
-        return 
-    }
     page-=1;
     if(page === 0){
         page += 1;
@@ -130,25 +118,15 @@ refs.input.addEventListener('input', e => {
     e.preventDefault();
     page = 1;
     refs.trendContainer.innerHTML = '';
-    refs.paginationButtons.innerHTML = ''
-    refs.paginationButtons.insertAdjacentHTML ('beforeend',`<li class="button-list__item"><button class="js-btn__first">	
-                    &#171;</button></li>
-                <li class="button-list__item js-btn-pr"><button class="button-list__pgn">Prev</button></li>
-                <div class="button-list__container">
-                    <li class="button-list__item button-list__item--curretn"><button class="button-list__page">1</button></li>
-                    <li class="button-list__item "><button class="button-list__page">2</button></li>
-                    <li class="button-list__item "><button class="button-list__page">3</button></li>
-                </div>
-                <li class="button-list__item js-btn-next"><button class="next button-list__pgn">Next</button></li>
-                <li class="button-list__item "><button class="js-btn__last">	
-                    &#187;</button></li>`)
+
     searchQuery = e.currentTarget.value.trim();
+    
     clearArticlesConteiner();
     if(searchQuery === ''){
         return
     }
-    const film = fetchFilm(searchQuery,page)
 
+    const film = fetchFilm(searchQuery, page)
     film.then(({ total_pages }) => {
        (total_pages/19)%2 === 0?totalPages = total_pages - 4:totalPages = total_pages;
         refs.lastElBtn.textContent = totalPages;
@@ -158,6 +136,7 @@ refs.input.addEventListener('input', e => {
         renderMovies(results)
         return results; 
     })
+
 })
 
 
@@ -182,19 +161,19 @@ function btnCreate(){
 
 
 function fetchFilm(searchQuery, page) {
-    if (!searchQuery) {
-        return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
-    .then(r => {
-        if (r.ok) {
-            return r.json()
-        }
+//     if (!searchQuery) {
+//         return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
+//     .then(r => {
+//         if (r.ok) {
+//             return r.json()
+//         }
   
-})
-.then( film => {
-    return film; 
+// })
+// .then( film => {
+//     return film; 
 
-})
-    }
+// })
+//     }
     // console.log(page)
     return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${searchQuery}`)
     .then(r => {
