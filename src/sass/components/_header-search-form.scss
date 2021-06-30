@@ -76,7 +76,7 @@
 }
 
 .header__input:focus {
-  ~ .search-btn .input__icon__svg {
+  ~ .input__icon__svg {
     stroke: $accent-color;
   }
 }

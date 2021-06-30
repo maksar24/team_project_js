@@ -40,8 +40,10 @@
 
 .footer__link {
   text-decoration: none;
-  background-image: linear-gradient(rgb(176, 251, 188), rgb(176, 251, 188)),
-    linear-gradient(#feb2b2, #feb2b2);
+  background-image: 
+  linear-gradient(transparent, transparent), linear-gradient($accent-color, $accent-color);
+  // linear-gradient(rgb(176, 251, 188), rgb(176, 251, 188)),
+  //   linear-gradient(#feb2b2, #feb2b2);
   background-size: 100% 2px, 0 2px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
@@ -105,31 +107,52 @@
 
 
 .button__styles--close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  padding: 0;
-  margin: 0;
+  // position: absolute;
+  // top: 8px;
+  // right: 8px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // width: 35px;
+  // height: 35px;
+  // padding: 0;
+  // margin: 0;
+  // border: none;
+  // border-radius: 50%;
+  // background-color: transparent;
+  // color: #fff;
+  // cursor: pointer;
+  // // transition: background-color var(--animation-duration) var(--timing-function);
+  // outline: none;
+  // background-image: url('../img/pngwing.com.png');
+  // background-position: center;
+  // background-size: 70%;
+  // background-repeat: no-repeat;
+
+  // @media screen and (max-width: 767px) {
+  //   top: 3px;
+  // right: 3px;
+  // }
+    position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 23px;
+  height: 23px;
   border: none;
   border-radius: 50%;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  // transition: background-color var(--animation-duration) var(--timing-function);
-  outline: none;
-  background-image: url('../img/pngwing.com.png');
-  background-position: center;
-  background-size: 70%;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:focus {
+    background: #ff6b01;
+  }
 
-  @media screen and (max-width: 767px) {
-    top: 3px;
-  right: 3px;
+  @media screen and (min-width: 768px), (min-width: 1024px) {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -212,12 +235,17 @@
 
 .footer__modal-title {
   color: #ff6b01;
-
-  font-weight: 700;
+  //from Kate SEA
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  //
+  
+  // font-weight: 700;
   font-size: 20px;
   line-height: 1.15;
   text-align: center;
-  letter-spacing: 0.03em;
+  // letter-spacing: 0.03em;
 }
 
 .team__list {
@@ -247,8 +275,11 @@
 .person {
   width: 100%;
   padding: 5px;
+   // from Kate SEA
+  border: 1px solid #eeeeee;
+  //
   border-radius: 0px 0px 4px 4px;
-  background-color: rgb(243, 227, 198);
+  // background-color: rgb(243, 227, 198);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
@@ -260,8 +291,15 @@
 .person__name {
   margin-top: 0;
   color: black;
-  font-weight: 500;
-  font-size: 14px;
+  // from Kate SEA
+  padding-top: 5px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  //
+
+  // font-weight: 500;
+  // font-size: 14px;
   line-height: 1.19;
   text-align: center;
   letter-spacing: 0.03em;
@@ -269,12 +307,14 @@
   @media screen and (max-width: 767px) {
     width: 100%;
     display: block;
-    font-size: 18px;
+    // font-size: 18px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: 768px) {
     width: 100%;
     display: block;
-    font-size: 16px;
+    // font-size: 16px;
+    font-size: 14px;
   }
 }
