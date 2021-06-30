@@ -1,3 +1,4 @@
+
 const refs = {
    // ссылка на основной контейнер
    trendContainer: document.querySelector('.main__film-list'), 

@@ -36,6 +36,9 @@ refs.inputRef.addEventListener('blur', e => {
 
 
 refs.lastElBtn.addEventListener('click', e => {
+        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
+        return 
+    }
     page = totalPages;
      const film = fetchFilm(searchQuery,page)
     film.then(({ results }) => {
@@ -49,6 +52,9 @@ refs.lastElBtn.addEventListener('click', e => {
 
 
 refs.firstElBtn.addEventListener('click', e => {
+        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
+        return 
+    }
     page = 1;
      const film = fetchFilm(searchQuery,page)
     film.then(({ results }) => {
@@ -62,6 +68,9 @@ refs.firstElBtn.addEventListener('click', e => {
 
 
 refs.nextBtn.addEventListener('click', e => {
+        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
+        return 
+    }
     page += 1;
      if(page > totalPages){
         page -= 1;
@@ -78,6 +87,9 @@ refs.nextBtn.addEventListener('click', e => {
 })
 
 refs.prevBtn.addEventListener('click', e => {
+        if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
+        return 
+    }
     page-=1;
     if(page === 0){
         page += 1;
@@ -95,12 +107,12 @@ refs.prevBtn.addEventListener('click', e => {
 })
 
 refs.btnList.addEventListener('click', e => {
-    if (e.target.nodeName !== 'BUTTON' || searchQuery !== '' ){
+    if (e.target.nodeName !== 'BUTTON' || refs.input.value === '' ){
         return 
     }
     page = e.target.textContent - 0;
     const film =  fetchFilm(searchQuery,page)
-    film.then(results => {
+    film.then(({results}) => {
         // console.log(results)
         refs.trendContainer.innerHTML = '';
         renderMovies(results)
@@ -118,6 +130,18 @@ refs.input.addEventListener('input', e => {
     e.preventDefault();
     page = 1;
     refs.trendContainer.innerHTML = '';
+    refs.paginationButtons.innerHTML = ''
+    refs.paginationButtons.insertAdjacentHTML ('beforeend',`<li class="button-list__item"><button class="js-btn__first">	
+                    &#171;</button></li>
+                <li class="button-list__item js-btn-pr"><button class="button-list__pgn">Prev</button></li>
+                <div class="button-list__container">
+                    <li class="button-list__item button-list__item--curretn"><button class="button-list__page">1</button></li>
+                    <li class="button-list__item "><button class="button-list__page">2</button></li>
+                    <li class="button-list__item "><button class="button-list__page">3</button></li>
+                </div>
+                <li class="button-list__item js-btn-next"><button class="next button-list__pgn">Next</button></li>
+                <li class="button-list__item "><button class="js-btn__last">	
+                    &#187;</button></li>`)
     searchQuery = e.currentTarget.value.trim();
     clearArticlesConteiner();
     if(searchQuery === ''){
@@ -158,7 +182,7 @@ function btnCreate(){
 
 
 function fetchFilm(searchQuery, page) {
-    if (searchQuery === '') {
+    if (!searchQuery) {
         return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
     .then(r => {
         if (r.ok) {

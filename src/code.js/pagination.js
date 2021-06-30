@@ -44,7 +44,10 @@ refs.next.addEventListener('click',e => {
 })
 
 
-refs.pr.addEventListener('click', e =>{
+refs.pr.addEventListener('click', e => {
+        if(e.target.nodeName!== 'BUTTON' || refs.input.value !== ''){
+        return
+    }
     n-=1;
     if(n === 0){
         n++
@@ -56,7 +59,7 @@ refs.pr.addEventListener('click', e =>{
 })
 
 refs.btnList.addEventListener('click', e => {
-    if(e.target.nodeName!== 'BUTTON' || refs.input.value === ''){
+    if(e.target.nodeName!== 'BUTTON' || refs.input.value !== ''){
         return
     }
         
@@ -103,7 +106,7 @@ function renderMovies(results) {
 
             results.forEach(result => {
                 result.genre_ids = result.genre_ids.slice(0, 3).map(genre => genres[genre])
-                result.release_date = result.release_date.slice(0, 4)
+                result.release_date = result.release_date?.slice(0, 4)
             });
 
             const markUp = filmCardTpl(results);
