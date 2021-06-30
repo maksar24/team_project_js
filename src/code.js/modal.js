@@ -64,38 +64,38 @@ function renderMovies(r){
     });
 
   // попытка изменять текс кнопок
-  // function changeWatchedButton() {
-  //   const watchedList = localStorage.getItem('watched')
+  function changeWatchedButton() {
+    const watchedList = localStorage.getItem('watched')
 
-  //   if (watchedList === null || [] || !watchedList.includes(JSON.stringify(r.id))) {
-  //     refs.btn__watched.textContent = 'add to watched'
-  //     refs.btn__watched.classList.remove('button-is__active')
-  //   }
-  //   if (watchedList.includes(JSON.stringify(r.id))) {
-  //     refs.btn__watched.classList.add('button-is__active')
-  //     console.log(watchedList.includes(JSON.stringify(r.id)))
-  //     refs.btn__watched.textContent = 'remove from watched'
-  //   }
-  //   console.log('watched', refs.btn__watched)
-  // }
+    if (watchedList === null || [] || !watchedList.includes(JSON.stringify(r.id))) {
+      refs.btn__watched.textContent = 'add to watched'
+      refs.btn__watched.classList.remove('button-is__active')
+    }
+    if (watchedList.includes(JSON.stringify(r.id))) {
+      refs.btn__watched.classList.add('button-is__active')
+      console.log(watchedList.includes(JSON.stringify(r.id)))
+      refs.btn__watched.textContent = 'remove from watched'
+    }
+    console.log('watched', refs.btn__watched)
+  }
 
-  // function changeQueueButton() {
-  //   const queueList = localStorage.getItem('queue')
+  function changeQueueButton() {
+    const queueList = localStorage.getItem('queue')
 
-  //   if (queueList === null || [] || !queueList.includes(JSON.stringify(r.id))) {
-  //     refs.btn__queue.textContent = 'add to queue'
-  //     refs.btn__queue.classList.remove('button-is__active')
-  //   }
-  //   if (queueList.includes(JSON.stringify(r.id))) {
-  //     console.log(queueList.includes(JSON.stringify(r.id)))
-  //     refs.btn__queue.classList.add('button-is__active')
-  //     refs.btn__queue.textContent = 'remove from queue'
-  //   }
-  //   console.log('queue', refs.btn__queue)
-  // }
+    if (queueList === null || [] || !queueList.includes(JSON.stringify(r.id))) {
+      refs.btn__queue.textContent = 'add to queue'
+      refs.btn__queue.classList.remove('button-is__active')
+    }
+    if (queueList.includes(JSON.stringify(r.id))) {
+      console.log(queueList.includes(JSON.stringify(r.id)))
+      refs.btn__queue.classList.add('button-is__active')
+      refs.btn__queue.textContent = 'remove from queue'
+    }
+    console.log('queue', refs.btn__queue)
+  }
 
-  // changeWatchedButton()
-  // changeQueueButton()
+  changeWatchedButton()
+  changeQueueButton()
     
     addWatched.refs.button.addEventListener('click', e => {
         addWatched.addMovies('watched', r.id)

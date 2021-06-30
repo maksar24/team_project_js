@@ -2,7 +2,6 @@ import refs from './refs';
 import SearchApiTrend from "./apiTrendservice.js";
 import filmCardTpl from '../templates/withoutRating.hbs';
 const debounce = require('lodash.debounce');
-import modalTpl from '../templates/modal.hbs'
 
 
 let searchQuery = '';
@@ -24,7 +23,7 @@ refs.inputRef.addEventListener('blur', e => {
         fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
         .then(r => r.json)
         .then(({results}) => {
-            refs.filmList.innerHTML = '';
+            refs.trendContainer.innerHTML = '';
             SearchApiTrend.fetchtrend().then(results => {
                 renderMovies(results);
         
@@ -41,7 +40,7 @@ refs.lastElBtn.addEventListener('click', e => {
     const film = fetchFilm(searchQuery,page)
     film.then(results => {
         console.log(results)
-        refs.filmList.innerHTML = '';
+        refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
@@ -54,7 +53,7 @@ refs.firstElBtn.addEventListener('click', e => {
     const film = fetchFilm(searchQuery,page)
     film.then(results => {
         console.log(results)
-        refs.filmList.innerHTML = '';
+        refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
@@ -71,7 +70,7 @@ refs.nextBtn.addEventListener('click', e => {
      const film = fetchFilm(searchQuery,page)
     film.then(({ results }) => {
         console.log(results)
-        refs.filmList.innerHTML = '';
+        refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
@@ -87,7 +86,7 @@ refs.prevBtn.addEventListener('click', e => {
     const film = fetchFilm(searchQuery,page)
     film.then(({ results }) => {
         console.log(results)
-        refs.filmList.innerHTML = '';
+        refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
@@ -100,10 +99,10 @@ refs.btnList.addEventListener('click', e => {
         return
     }
     page = e.target.textContent - 0;
-    const film = SearchApiTrend.fetchtrend()
-    .then(results => {
+    const film =  fetchFilm(searchQuery,page)
+    film.then(results => {
         // console.log(results)
-        refs.filmList.innerHTML = '';
+        refs.trendContainer.innerHTML = '';
         renderMovies(results)
         return results; 
     })
@@ -115,10 +114,12 @@ function elBtnCreate(location, page){
 	refs.btnList.insertAdjacentHTML(location,`<li class="button-list__item"><button class="button-list__page">${page}</button></li>`)
 }
 
-refs.input.addEventListener('input', e => {
+refs.input.addEventListener('input', debounce(onInputSurse(),1000))
+
+function onInputSurse(e){
     e.preventDefault();
     page = 1;
-    refs.filmList.innerHTML = '';
+    refs.trendContainer.innerHTML = '';
     searchQuery = e.currentTarget.value.trim();
     clearArticlesConteiner();
     if(searchQuery === ''){
@@ -128,7 +129,7 @@ refs.input.addEventListener('input', e => {
     const film = fetchFilm(searchQuery,page)
 
     film.then(({ total_pages }) => {
-       (total_pages/19)%2 === 0?totalPages = total_pages - 2:totalPages = total_pages;
+       (total_pages/19)%2 === 0?totalPages = total_pages - 4:totalPages = total_pages;
         refs.lastElBtn.textContent = totalPages;
         return total_pages; 
     })
@@ -136,7 +137,7 @@ refs.input.addEventListener('input', e => {
         renderMovies(results)
         return results; 
     })
-})
+} 
 
 function clearArticlesConteiner() {
     refs.trendContainer.innerHTML = '';
@@ -183,7 +184,7 @@ function renderMovies(results) {
                 result.release_date = result.release_date.slice(0, 4)
             });
                 const galleryListMarkup = filmCardTpl (results);
-                refs.filmList.insertAdjacentHTML('beforeend', galleryListMarkup)
+                refs.trendContainer.insertAdjacentHTML('beforeend', galleryListMarkup)
              
         })
 }
