@@ -76,10 +76,8 @@ function renderMovies(r) {
     }
     if (watchedList.includes(JSON.stringify(r.id))) {
       refs.btn__watched.classList.add('button-is__active')
-      console.log(watchedList.includes(JSON.stringify(r.id)))
       refs.btn__watched.textContent = 'remove from watched'
     }
-    console.log('watched', refs.btn__watched)
   }
 
   function changeQueueButton() {
@@ -90,11 +88,9 @@ function renderMovies(r) {
       refs.btn__queue.classList.remove('button-is__active')
     }
     if (queueList.includes(JSON.stringify(r.id))) {
-      console.log(queueList.includes(JSON.stringify(r.id)))
       refs.btn__queue.classList.add('button-is__active')
       refs.btn__queue.textContent = 'remove from queue'
     }
-    console.log('queue', refs.btn__queue)
   }
 
   changeWatchedButton()
