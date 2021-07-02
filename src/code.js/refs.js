@@ -68,6 +68,8 @@ const refs = {
   //стрелка вверх
     arrow: document.querySelector('.back_to_top'),
 
+  // для скрола
+    sentinel: document.querySelector('.observer'),
 }
 
 export default refs;

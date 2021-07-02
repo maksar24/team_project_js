@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "focus-visible": "^5.2.0",
+    "infinite-scroll": "^4.0.1",
     "lodash.debounce": "^4.0.8"
   }
 }
