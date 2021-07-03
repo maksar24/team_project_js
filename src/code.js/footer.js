@@ -7,7 +7,8 @@ function onCloseModal (e) {
   window.removeEventListener('keydown', onEscClose);
   
   document.body.style.overflow = ''; 
-  refs.modal.style.display = ''; 
+  refs.modal.style.display = '';
+  refs.arrow.classList.remove('visually-hidden')
 }
 
 function onEscClose(event) {
@@ -25,7 +26,7 @@ let modal = document.querySelector('#modal'),
   document.querySelector('.footer').addEventListener('click', function(e) {
     if(e.target.tagName === 'A') { 
     ModalContent = document.querySelector(e.target.getAttribute('href')) || false; 
-
+    refs.arrow.classList.add('visually-hidden')
     window.addEventListener('keydown', onEscClose);
 
     if(ModalContent !== false 
@@ -35,7 +36,7 @@ let modal = document.querySelector('#modal'),
       document.body.style.overflow = 'hidden'; 
       ModalContentBlock.append(...ModalContent.children);
       refs.modal.style.display = 'block';
-      
-    } else ModalContent = '';
+
+      } else ModalContent = '';
   }
 });
