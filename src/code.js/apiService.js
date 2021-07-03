@@ -13,20 +13,16 @@ export default class newsApiService{
         return newFilms;
     }
     
-    incrementPage(){
-        this.page +=1;
+    setPage(page) {
+        this.page = page;
     }
-    resetPage(){
-        this.page = 1;
-    }
+    
+    
     get query(){
         return this.searchQuery;
     }
+
     set query(newQuery){
-        return this.searchQuery = newQuery;
+        this.searchQuery = newQuery;
     }
-    
-
-    
-
 }

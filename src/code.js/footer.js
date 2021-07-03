@@ -32,18 +32,10 @@ let modal = document.querySelector('#modal'),
     && ModalContent.classList.contains('footer-modal__content')) {
       e.preventDefault(); 
     
-
       document.body.style.overflow = 'hidden'; 
       ModalContentBlock.append(...ModalContent.children);
-      refs.modal.style.display = 'block'; 
+      refs.modal.style.display = 'block';
+      
     } else ModalContent = '';
   }
-
-  
-  // if(refs.modal.contains(e.target) && e.target !== ModalContentBlock && !ModalContentBlock.contains(e.target) 
-  // || e.target.classList.contains('--modal__close')) { 
-  //   document.body.style.overflow = ''; 
-  //   refs.modal.style.display = ''; 
-  //   if(ModalContent) ModalContent.append(...ModalContentBlock.children); 
-  // }
 });

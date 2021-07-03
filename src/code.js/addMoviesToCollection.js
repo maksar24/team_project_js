@@ -1,6 +1,7 @@
 import { success } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
+import {paginationService} from './header.js';
 
 export default class addMoviesToCollection {
     constructor({ selector }) {
@@ -24,9 +25,12 @@ export default class addMoviesToCollection {
                 localStorage.setItem(`${nameList}`, JSON.stringify(value))
             }
             this.refs.button.textContent = `add to ${nameList}`
+            this.refs.button.classList.remove('active__btn')
+            paginationService.refreshPage();
             return
         }
         this.refs.button.textContent = `remove from ${nameList}`
+        this.refs.button.classList.add('active__btn')
         value.push(moviesId)
         localStorage.setItem(`${nameList}`, JSON.stringify(value))
         // добавила оповещение о добавлении
