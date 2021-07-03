@@ -16,9 +16,7 @@ export default class markUpMoviesCollection {
         return refs;
     }
 
-    fetchPersonsCollectionMovies(e) {
-        const moviesCollection = e;
-
+    fetchPersonsCollectionMovies(moviesCollection) {
         moviesCollection.forEach(movie_id => {
             fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=44d74a10460e9a32f8546bed31d47780&language=en-US`)
                 .then(res => {
@@ -49,9 +47,19 @@ export default class markUpMoviesCollection {
 
     // скрытие кнопок пагинации
     hidePaginationButtons(e) {
-        if (e === null || e.length <= 9) {
+        if (e === null || e.length < 9) {
+            console.log(e.length)
             return this.refs.paginationButtons.classList.add('visually-hidden')
         }
         this.refs.paginationButtons.classList.remove('visually-hidden')
+    }
+
+    // цвет активной кнопки
+    setActiveBtn(state) {
+        if (state) {
+            this.refs.button.classList.add('active__btn')
+        } else {
+            this.refs.button.classList.remove('active__btn')
+        }
     }
 }

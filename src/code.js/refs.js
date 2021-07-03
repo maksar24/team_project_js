@@ -42,7 +42,6 @@ const refs = {
    logoLink: document.querySelector('.logo'),
 
    /*ссылки для формы поиска на хедере*/
-   headerForm: document.querySelector('.header__search__form'), 
    inputRef: document.querySelector('.header__input'),
    btnSrchRef: document.querySelector('.search-btn'),
    svgRef: document.querySelector('.input__icon__svg'),
@@ -60,10 +59,12 @@ const refs = {
     filmList : document.querySelector('.js-list'),
     nextBtn : document.querySelector('.js-btn-next'),
     prevBtn : document.querySelector('.js-btn-pr'),
-    btnList : document.querySelector('.button-list__container'),
     firstElBtn : document.querySelector('.js-btn__first'),
     lastElBtn :document.querySelector('.js-btn__last'),
-    btnListPage: document.querySelector('.button-list__page'),
+    // btnListPage: document.querySelector('.button-list__page'),
+    //кнопки-стрелки в пагинации
+    lBtn :document.querySelector('.js-btn-l'),
+    fBtn : document.querySelector('.js-btn-f'),
     
   //стрелка вверх
     arrow: document.querySelector('.back_to_top'),

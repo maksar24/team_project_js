@@ -1,8 +1,7 @@
 import refs from './refs';
-// импорт функционала для отрисовки списков фильмов
+// импорт функционала для отрисовки списков фильмов и к-ва карточек
 import markUpMoviesCollection from './markUpMoviesCollection.js';
-
-refs.libraryBtn.addEventListener('click', showWatchedCollection);
+const PAGE_SIZE = 9
 
 // добавляет функционал на кнопки списков
 const showWatched = new markUpMoviesCollection({
@@ -13,11 +12,39 @@ const showQueue = new markUpMoviesCollection({
     selector: '[data-name="show__queue"]',
 });
 
-function showWatchedCollection() {
-    refs.input.value = '';
+
+let paginationService;
+let collectionName = 'watched';
+
+//для отрисовки карточек с списков при нажатии  MyLibrary
+function libraryInit(service) {
+    paginationService = service; 
+    paginationService.setCallback(fetchMoviesFromLocalStorage);
+    paginationService.firstPage();
+}
+
+export function fetchMoviesFromLocalStorage(page) {
+    const collection = JSON.parse(localStorage.getItem(collectionName));
+    
+    const pages = Math.ceil(collection.length / PAGE_SIZE);
+    paginationService.setTotalPages(pages);
+    if (page > pages) {
+        page -= 1;
+        paginationService.setPage(page); 
+    }
+    const result = collection.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+    if (collectionName === 'watched') {
+        showWatchedCollection(result);
+    } else {
+        showQueueCollection(result);
+    }
+}
+
+function showWatchedCollection(watchedCollection) {
     showWatched.hideBackgroundWithoutCollection()
     document.querySelectorAll('.film__list__item').forEach(li => li.remove())
-    const watchedCollection = JSON.parse(localStorage.getItem('watched'))
+    
     if (watchedCollection === null || watchedCollection.length === 0) {
             showWatched.refs.button.disabled = true
             showQueue.refs.secondButton.disabled = false
@@ -30,14 +57,15 @@ function showWatchedCollection() {
     showQueue.refs.secondButton.disabled = false
 }
 
-function showQueueCollection() {
+function showQueueCollection(queueCollection) {
     showQueue.hideBackgroundWithoutCollection()
     document.querySelectorAll('.film__list__item').forEach(li => li.remove())
-    const queueCollection = JSON.parse(localStorage.getItem('queue'))
+    
     if (queueCollection === null || queueCollection.length === 0) {
             showQueue.refs.button.disabled = true
             showWatched.refs.firstButton.disabled = false
-        return showWatched.showBackgroundWithoutCollection('queue')
+            showQueue.hidePaginationButtons(queueCollection)
+        return showQueue.showBackgroundWithoutCollection('queue')
     }
     showQueue.hidePaginationButtons(queueCollection)
     showQueue.fetchPersonsCollectionMovies(queueCollection)
@@ -45,6 +73,18 @@ function showQueueCollection() {
     showWatched.refs.firstButton.disabled = false
 }
 
-showWatched.refs.button.addEventListener('click', showWatchedCollection);
+showWatched.refs.button.addEventListener('click', () => {
+    collectionName = 'watched';
+    paginationService.firstPage();
+    showQueue.setActiveBtn(false)
+    showWatched.setActiveBtn(true);
+});
 
-showQueue.refs.button.addEventListener('click', showQueueCollection);
+showQueue.refs.button.addEventListener('click', () => {
+    collectionName = 'queue';
+    paginationService.firstPage();
+    showQueue.setActiveBtn(true);
+    showWatched.setActiveBtn(false);
+});
+
+export default libraryInit;

@@ -7,7 +7,8 @@ function onCloseModal (e) {
   window.removeEventListener('keydown', onEscClose);
   
   document.body.style.overflow = ''; 
-  refs.modal.style.display = ''; 
+  refs.modal.style.display = '';
+  refs.arrow.classList.remove('visually-hidden')
 }
 
 function onEscClose(event) {
@@ -25,25 +26,17 @@ let modal = document.querySelector('#modal'),
   document.querySelector('.footer').addEventListener('click', function(e) {
     if(e.target.tagName === 'A') { 
     ModalContent = document.querySelector(e.target.getAttribute('href')) || false; 
-
+    refs.arrow.classList.add('visually-hidden')
     window.addEventListener('keydown', onEscClose);
 
     if(ModalContent !== false 
     && ModalContent.classList.contains('footer-modal__content')) {
       e.preventDefault(); 
     
-
       document.body.style.overflow = 'hidden'; 
       ModalContentBlock.append(...ModalContent.children);
-      refs.modal.style.display = 'block'; 
-    } else ModalContent = '';
-  }
+      refs.modal.style.display = 'block';
 
-  
-  // if(refs.modal.contains(e.target) && e.target !== ModalContentBlock && !ModalContentBlock.contains(e.target) 
-  // || e.target.classList.contains('--modal__close')) { 
-  //   document.body.style.overflow = ''; 
-  //   refs.modal.style.display = ''; 
-  //   if(ModalContent) ModalContent.append(...ModalContentBlock.children); 
-  // }
+      } else ModalContent = '';
+  }
 });
