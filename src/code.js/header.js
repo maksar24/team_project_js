@@ -4,7 +4,7 @@ import trendMovieTpl from "../templates/withoutRating.hbs";
 import refs from './refs';
 import renderMovies from "./trendMarkUp.js";
 import fetchGenres from "./apiGenres.js";
-import libraryInit from "./myLib.js";
+import showWatchedCollection from "./myLib.js";
 import PaginationService from "./pagination.js";
 import SearchService from './apiService.js';
 
@@ -15,22 +15,23 @@ const Theme = {
     MYLIBRARY: 'header__ml__theme',
 };
 
-export const paginationService = new PaginationService(); 
+export const paginationService = new PaginationService();
 
 homeInit();
-function homeInit() {SearchApiTrend.fetchTrends().then(({results, totalPages}) => {
-    paginationService.setCallback(fetchTrends);
-    paginationService.setTotalPages(totalPages);
-    
-    renderMovies(results);
-})
+function homeInit() {
+    SearchApiTrend.fetchTrends().then(({ results, totalPages }) => {
+        paginationService.setCallback(fetchTrends);
+        paginationService.setTotalPages(totalPages);
+
+        renderMovies(results);
+    })
 };
 
 function fetchTrends(page) {
-    SearchApiTrend.fetchTrends(page).then(({results, totalPages}) => {
-    paginationService.setTotalPages(totalPages);
-    renderMovies(results);
-})
+    SearchApiTrend.fetchTrends(page).then(({ results, totalPages }) => {
+        paginationService.setTotalPages(totalPages);
+        renderMovies(results);
+    })
 }
 
 refs.logoLink.addEventListener('click', onHomeLinkClick);
@@ -43,12 +44,12 @@ refs.pr.addEventListener('click', e => {
     if (e.target.nodeName !== 'BUTTON') {
         return
     }
-    
+
     paginationService.prevPage();
 })
 
 refs.next.addEventListener('click', e => {
-   paginationService.nextPage();
+    paginationService.nextPage();
 })
 
 
@@ -64,7 +65,7 @@ refs.btnList.addEventListener('click', e => {
     if (e.target.nodeName !== 'BUTTON') {
         return
     };
-   
+
     paginationService.changePage(+e.target.textContent);
 })
 
@@ -78,9 +79,8 @@ function onHomeLinkClick(event) {
     refs.button.classList.add('none');
 
     changeHeadersTheme(Theme.HOME);
-
+    paginationService.setPage(1)
     //отрисовываем фильмы на домашней странице
-
     homeInit();
 
     // отрисовка кнопок пагинации
@@ -93,8 +93,10 @@ function onMyLibraryLinkClick(event) {
     refs.headerForm.classList.add('none');
 
     changeHeadersTheme(Theme.MYLIBRARY);
-
-    libraryInit(paginationService);
+    
+    document.querySelector('[data-name="show__watched"]').classList.add('active__btn');
+    document.querySelector('[data-name="show__queue"]').classList.remove('active__btn');
+    showWatchedCollection();
 }
 
 
@@ -115,20 +117,20 @@ function changeHeadersTheme(theme) {
 
 function onMovieSearch() {
     if (refs.inputRef.value) {
-    paginationService.setCallback(fetchByInputQuery)
+        paginationService.setCallback(fetchByInputQuery)
     } else {
         paginationService.setCallback(fetchTrends)
     }
-    paginationService.firstPage(); 
-    
+    paginationService.firstPage();
+
 }
 
 async function fetchByInputQuery(page) {
     const api = new SearchService();
     api.query = refs.inputRef.value;
-    api.setPage(page); 
+    api.setPage(page);
 
-    const {results, total_pages: totalPages} = await api.fetchFilm();
+    const { results, total_pages: totalPages } = await api.fetchFilm();
     paginationService.setTotalPages(totalPages);
-    renderMovies(results);  
+    renderMovies(results);
 }

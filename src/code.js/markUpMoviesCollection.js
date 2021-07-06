@@ -47,14 +47,12 @@ export default class markUpMoviesCollection {
 
     // скрытие кнопок пагинации
     hidePaginationButtons(e) {
-        if (e === null || e.length < 9) {
-            console.log(e.length)
+        if (e === null || e.length <= 9) {
             return this.refs.paginationButtons.classList.add('visually-hidden')
         }
         this.refs.paginationButtons.classList.remove('visually-hidden')
     }
 
-    // цвет активной кнопки
     setActiveBtn(state) {
         if (state) {
             this.refs.button.classList.add('active__btn')
