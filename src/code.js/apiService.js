@@ -6,10 +6,11 @@ export default class newsApiService{
         this.searchQuery = '';
         this.page = 1;
     }    
-    async fetchFilm () {
+    async fetchFilm() {
+        console.log(this.page)
         const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&page=${this.page}include_adult=false&query=${this.searchQuery}`;        
         const film = await fetch(url);
-        const newFilms = await film.json();           
+        const newFilms = await film.json();
         return newFilms;
     }
     

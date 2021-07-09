@@ -124,12 +124,11 @@ function onMovieSearch() {
     paginationService.firstPage();
 
 }
-
 async function fetchByInputQuery(page) {
     const api = new SearchService();
     api.query = refs.inputRef.value;
     api.setPage(page);
-
+    
     const { results, total_pages: totalPages } = await api.fetchFilm();
     paginationService.setTotalPages(totalPages);
     renderMovies(results);
