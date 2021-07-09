@@ -131,5 +131,6 @@ async function fetchByInputQuery(page) {
     
     const { results, total_pages: totalPages } = await api.fetchFilm();
     paginationService.setTotalPages(totalPages);
+
     renderMovies(results);
 }
