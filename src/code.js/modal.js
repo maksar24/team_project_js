@@ -2,6 +2,7 @@ import refs from './refs';
 import modalTpl from '../templates/modal.hbs'
 // импорт функционала для добавления фильмов
 import addMoviesToCollection from './addMoviesToCollection.js';
+import { API_KEY, BASE_URL } from './constants';
 
 
 refs.backdrop.addEventListener('click',onBackDropClick)
@@ -13,9 +14,6 @@ refs.trendContainer.addEventListener('click', (e) => {
     fetchSelectedMovie(filmId)
     refs.arrow.classList.add('visually-hidden')
 })
-
-const API_KEY = '61153224aaaa08b03f5d3b14add082d2';
-const BASE_URL = 'https://api.themoviedb.org/3';
 
 function fetchSelectedMovie(filmId) {
     return fetch(`${BASE_URL}/movie/${filmId}?api_key=${API_KEY}`)

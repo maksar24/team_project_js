@@ -1,9 +1,7 @@
 /*Kate SEA меняю стили header*/
 import SearchApiTrend from "./apiTrendservice.js";
-import trendMovieTpl from "../templates/withoutRating.hbs";
 import refs from './refs';
 import renderMovies from "./trendMarkUp.js";
-import fetchGenres from "./apiGenres.js";
 import showWatchedCollection from "./myLib.js";
 import PaginationService from "./pagination.js";
 import SearchService from './apiService.js';
