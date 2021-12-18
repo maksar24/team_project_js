@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://AlexYurchenk/team__proj__js-V2",
+  "homepage": "https://github.com/maksar24/team_project_js",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /team__proj__js-V2/"
+    "build": "parcel build src/*.html --public-url /team_project_js/"
   },
   "repository": {
     "type": "git",
