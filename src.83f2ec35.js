@@ -51,4 +51,4 @@ var t=document.querySelector(".back_to_top");function e(){var e=window.pageYOffs
 },{"./trendMarkUp.js":"Vblo","./pagination.js":"GuRS","./modal.js":"DLTO","./header.js":"tfF1","./myLib.js":"tOrJ","./footer.js":"DKgw","./arrow.js":"QivE"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./code.js/main");
 },{"./sass/main.scss":"clu1","./code.js/main":"IcpM"}]},{},["Focm"], null)
-//# sourceMappingURL=/team__proj__js-V2/src.008849e5.js.map
+//# sourceMappingURL=/team_project_js/src.83f2ec35.js.map
